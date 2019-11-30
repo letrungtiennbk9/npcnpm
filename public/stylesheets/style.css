@@ -1508,8 +1508,26 @@ textarea.input {
   margin-left: 30px;
   color: #D10024;
 }
+.product-details .view-contact a{
+  color: red;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.product-details .mb-2{
+  margin-bottom: 20px;
+}
+.product-details .view-contact ul{
+  margin-left: 5px;
+  margin-top: 5px;
+  border: 1px solid #a7a7a7;
+  padding: 5px;
+  border-radius: 3px;
+}
+.product-details .view-contact ul li{
+  padding: 5px;
+}
 
-.product-details .product-options {
+..product-details .product-options {
   margin-top: 30px;
   margin-bottom: 30px;
 }
