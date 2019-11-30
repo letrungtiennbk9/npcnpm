@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('nmcnpm:server');
+var debug = require('debug')('hihihi:server');
 var http = require('http');
 
 /**
