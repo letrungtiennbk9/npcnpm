@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+		<title>Đăng bài</title>
+
+ 		<!-- Google font -->
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+	
+		<!-- Bootstrap -->
+		<link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.min.css"/>
+	
+		<!-- Slick -->
+		<link type="text/css" rel="stylesheet" href="/stylesheets/slick.css"/>
+		<link type="text/css" rel="stylesheet" href="/stylesheets/slick-theme.css"/>
+	
+		<!-- nouislider -->
+		<link type="text/css" rel="stylesheet" href="/stylesheets/nouislider.min.css"/>
+	
+		<!-- Font Awesome Icon -->
+		<link rel="stylesheet" href="/stylesheets/font-awesome.min.css">
+	
+		<!-- Custom stlylesheet -->
+		<link type="text/css" rel="stylesheet" href="/stylesheets/style.css"/>
+
+		<!--Modified-->
+		<link rel="stylesheet" href="/javascripts/owlcarousel/assets/owl.carousel.min.css">
+		<link rel="stylesheet" href="/javascripts/owlcarousel/assets/owl.theme.default.min.css">
+		<link rel="stylesheet" href="/stylesheets/my-style.css">
+
+    </head>
+	<body>
+		<!-- HEADER -->
+		<%include header%>
+    <!-- /HEADER -->
+    
+    <!--NAV BAR-->
+		<%include nav-bar%>
+
+		<!-- SECTION -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<form action="/users/dang-san-pham">
+					<div class="row">
+						<input class="input" type="text" placeholder="Ten SP" style="width:49%">
+						<input class="input" type="text" placeholder="Loại sản phẩm" style="width:50%">
+					</div>
+					<input class="input" type="text" placeholder="Hãng" style="width:50%">
+					<input class="input" type="text" placeholder="Giá" style="width:50%">
+					<input class="input" type="text" placeholder="Tình trạng" style="width:50%">
+					<input class="input" type="text" placeholder="Ảnh" style="width:50%">
+					<input class="input" type="text" placeholder="Chi tiết" style="width:50%">
+					<input class="input" type="text" placeholder="Mô tả" style="width:50%">
+					<input type="submit" value="Submit">
+				</form>
+				
+				
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /SECTION -->
+
+		<%include footer%>
+
+		<!-- jQuery Plugins -->
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<script src="/js/slick.min.js"></script>
+		<script src="/js/nouislider.min.js"></script>
+		<script src="/js/jquery.zoom.min.js"></script>
+		<script src="/js/main.js"></script>
+
+	</body>
+</html>

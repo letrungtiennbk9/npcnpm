@@ -8,6 +8,10 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var userLogin =require('./routes/login');
 var categoryRouter=require('./routes/category');
+let mongoose = require('mongoose');
+mongoose.connect("mongodb+srv://letrungtiennbk9:Trungtienle9@cluster0-hjpbg.mongodb.net/test?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
+let db = mongoose.connection;
+db.on('error',console.error.bind(console, 'MongoDB connection error.....'));
 
 var app = express();
 

@@ -121,6 +121,12 @@ ul, ol {
   border: 1px solid #E4E7ED;
   background-color: #FFF;
   width: 100%;
+  border-radius: 40px 40px 40px 40px;
+  box-sizing: border-box;
+}
+
+.input:focus{
+  outline: none;
 }
 
 textarea.input {
