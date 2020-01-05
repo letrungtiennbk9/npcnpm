@@ -38,7 +38,7 @@ var productSchema = mongoose.Schema({
 	location:{
 		type:Number,
 		required:true,
-	}
+	},
 	views:{
 		type:Number,
 		required:true,

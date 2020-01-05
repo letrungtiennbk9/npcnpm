@@ -12,7 +12,7 @@ exports.userLogin = function(req,res,next){
 
 //thông tin tài khoản
 exports.userInfo = function(req, res, next) {
-  res.render('index');
+  res.render('user_info');
 };
 
 //quên mật khẩu
