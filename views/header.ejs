@@ -9,8 +9,12 @@
         <li><a href="#"><i class="fa fa-map-marker"></i> 227 Nguyễn Văn Cừ, P4, Q5</a></li>
       </ul>
       <ul class="header-links pull-right">
-        <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
-        <li><a href="#"><i class="fa fa-user-o"></i> Tài khoản của tôi</a></li>
+        <%if(user){%>
+        <li><a href="/users"><i class="fa fa-user-o"></i> Tài khoản của tôi</a></li>
+        <li><a href="/logout"><i class="fa fa-dollar"></i> Đăng xuất</a></li>
+        <%}else{%>
+        <li><a href="/login"><i class="fa fa-dollar"></i> Đăng nhập / Đăng ký</a></li>
+        <%}%>
       </ul>
     </div>
   </div>
