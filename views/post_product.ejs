@@ -95,66 +95,80 @@
 				<div class="right col-lg-9">
 					<h4 class="mb-sm-4 mb-3">Đăng sản phẩm</h4>
 					<hr class="m-0">
-					<form action="/users/dang-san-pham" method="post">
-
+					<form>
 						<div class="form-group">
-							<input class="input" type="text" name="name" placeholder="Tên mặt hàng" required="">
+							<input id="input-product-name" class="input" type="text" name="name" placeholder="Tên mặt hàng" required="">
 						</div>
 						<div class="form-group">
-							<select class="input" name="category">
+							<select id="input-category" class="input" name="category">
 								<option disabled="" selected>--Chọn loại mặt hàng--</option>
+								<option value="5e14afe21c9d440000fc27a5">--Bất động sản--</option>
+								<option value="5e14e6f194109d45d73312c1">--Xe cộ--</option>
+								<option value="5e14e6f194109d45d73312c0">--Thời trang--</option>
+								<option value="5e14e6f194109d45d73312c2">--Đồ điện tử--</option>
+								<option value="5e14e6f194109d45d73312c3">--Giải trí--</option>
 							</select>
 						</div>
 						<div class="form-group">
-							<select class="input" name="satus">
+							<select id="input-status" class="input" name="satus">
 								<option disabled="" selected>--Tình trạng mặt hàng--</option>
+								<option value=1>--Như mới--</option>
+								<option value=2>--Như mới--</option>
+								<option value=3>--Mới vừa--</option>
+								<option value=4>--Khá mới--</option>
+								<option value=5>--Khá cũ--</option>
 							</select>
 						</div>
 						<div class="form-group">
-							<select class="input" name="location">
+							<select id="input-location" class="input" name="location">
 								<option disabled="" selected>--Chọn vị trí--</option>
+								<option value=1 >--Tp.Hồ Chí Minh--</option>
+								<option value=2 >--Hà Nội--</option>
+								<option value=3 >--Đà Nẵng--</option>
+								<option value=4 >--Cần Thơ--</option>
+								<option value=5 >--Huế--</option>
 							</select>
 						</div>
 						<div class="form-group">
-							<input class="input" type="text" placeholder="Hãng" name="brand" >
+							<input id="input-brand" class="input" type="text" placeholder="Hãng" name="brand" >
 						</div>
 						<div class="form-group">
-							<div class="col-lg-3 relative product-img" data-target="image1">
-								<img class="temp-img" width="100%" id="temp-img-1">
+							<div class="col-lg-3 relative product-img" data-target="image1" style="text-align: center;">
+								<img class="temp-img" height="250px" id="temp-img-1">
 								<div class="select-img" data-target='image1'>
 									<span>Chọn ảnh</span>
 								</div>
 							</div>
-							<div class="col-lg-3 relative product-img" data-target="image2">
-								<img class="temp-img" width="100%" id="temp-img-2">
+							<div class="col-lg-3 relative product-img" data-target="image2" style="text-align: center;">
+								<img class="temp-img" height="250px" id="temp-img-2">
 								<div class="select-img" data-target='image2'>
 									<span>Chọn ảnh</span>
 								</div>
 							</div>
-							<div class="col-lg-3 relative product-img" data-target="image3">
-								<img class="temp-img" width="100%" id="temp-img-3">
+							<div class="col-lg-3 relative product-img" data-target="image3" style="text-align: center;">
+								<img class="temp-img" height="250px" id="temp-img-3">
 								<div class="select-img" data-target='image3'>
 									<span>Chọn ảnh</span>
 								</div>
 							</div>
-							<div class="col-lg-3 relative product-img" data-target="image4">
-								<img class="temp-img" width="100%" id="temp-img-4">
+							<div class="col-lg-3 relative product-img" data-target="image4" style="text-align: center;">
+								<img class="temp-img" height="250px" id="temp-img-4">
 								<div class="select-img" data-target='image4'>
 									<span>Chọn ảnh</span>
 								</div>
 							</div>
-							<input class="input input-img" data-img="temp-img-1" type="file" name="image1" style="display: none;" accept="image/png,image/jpeg,image/jpg">
+							<input id="input-image-1" class="input input-img" data-img="temp-img-1" type="file" name="image1" style="display: none;" accept="image/png,image/jpeg,image/jpg">
 							<input class="input input-img" data-img="temp-img-2" type="file" name="image2" style="display: none;" accept="image/png,image/jpeg,image/jpg">
 							<input class="input input-img" data-img="temp-img-3"type="file" name="image3" style="display: none;" accept="image/png,image/jpeg,image/jpg">
 							<input class="input input-img" data-img="temp-img-4"type="file" name="image4" style="display: none;" accept="image/png,image/jpeg,image/jpg">
 						</div>
 						<div class="form-group">
-							<input class="input" type="number" min="0" placeholder="Giá" name="price" required="">
+							<input id="input-price" class="input" type="number" min="0" placeholder="Giá" name="price" required="">
 						</div>
 						<div class="form-group">
-							<textarea class="input" placeholder="Chi tiết" name="detail"></textarea>
+							<textarea id="input-details" class="input" placeholder="Chi tiết" name="detail"></textarea>
 						</div>
-						<button type="submit" class="primary-btn" style="display: block;margin: 0 auto" name="">Đăng bài</button>
+						<button id="submit-product" type="button" class="primary-btn" style="display: block;margin: 0 auto" name="">Đăng bài</button>
 					</form>
 				</div>
 			</div>
@@ -173,7 +187,12 @@
 	<script src="/javascripts/nouislider.min.js"></script>
 	<script src="/javascripts/jquery.zoom.min.js"></script>
 	<script src="/javascripts/main.js"></script>
+	<script src="/javascripts/my-js/myjs.js"></script>
 	<script type="text/javascript">
+		$('#submit-product')[0].click(function(){
+			console.log('submit product');
+		});
+		
 		$('.product-img').click(function(){
 			var input = $(this).attr('data-target');
 			$('input[name="'+input+'"]').click();
