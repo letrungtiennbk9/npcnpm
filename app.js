@@ -3,14 +3,19 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const passport = require('passport');
+const session = require('express-session');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var userLogin =require('./routes/login');
 var categoryRouter=require('./routes/category');
 var seederRouter= require('./routes/seeder');
+
+const authMiddleware=require('./middlewares/auth');
+
 let mongoose = require('mongoose');
-mongoose.connect("mongodb+srv://letrungtiennbk9:Trungtienle9@cluster0-hjpbg.mongodb.net/ChoLon?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
+require('dotenv').config();
+mongoose.connect("mongodb+srv://tien:tien@cluster0-hjpbg.mongodb.net/nmcnpm?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
 let db = mongoose.connection;
 db.on('error',console.error.bind(console, 'MongoDB connection error.....'));
 
@@ -25,16 +30,35 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(
+	session({
+		secret: 'secret',
+		resave: true,
+		saveUninitialized: true
+	})
+);
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(function(req,res,next){
+	if (req.isAuthenticated()) {
+		res.locals.user=req.user;
+	}
+	else{
+		res.locals.user=null;
+	}
+	next();
+})
+
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/login',userLogin);
+app.use('/users',authMiddleware, usersRouter);
 app.use('/category',categoryRouter);
-app.use('/seeder',seederRouter);
+// app.use('/seeder',seederRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+	next(createError(404));
 });
 
 // error handler

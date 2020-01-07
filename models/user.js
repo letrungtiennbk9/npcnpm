@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 var Schema = mongoose.Schema;
 var userSchema = mongoose.Schema({
 	username: {
@@ -15,20 +16,18 @@ var userSchema = mongoose.Schema({
 	avatar:{
 		type:String,
 	},
-	contact:{
-		phone:{
-			type:String,
-			required:true,
-		},
-		email:{
-			type:String,
-		},
-		facebook:{
-			type:String,
-		},
-		address:{
-			type:String,
-		}
+	phone:{
+		type:String,
+		required:true,
+	},
+	email:{
+		type:String,
+	},
+	facebook:{
+		type:String,
+	},
+	address:{
+		type:String,
 	},
 	gender:{
 		type:Number,
@@ -56,3 +55,24 @@ var userSchema = mongoose.Schema({
 var User = mongoose.model('User', userSchema);
 
 module.exports = User;
+
+module.exports.createUser = function (newUser, callBack) {
+	var bcrypt = require('bcryptjs');
+	bcrypt.genSalt(10, function (err, salt) {
+		bcrypt.hash(newUser.password, salt, function (err, hash) {
+			newUser.password = hash;
+			newUser.save(callBack);
+		});
+	});
+}
+
+module.exports.getUserByUsername = (username, callback) => {
+	User.findOne({ username: username }, callback);
+}
+
+module.exports.comparePassword = (candidatePassword, hash, callback) => {
+	bcrypt.compare(candidatePassword, hash, function (err, isMatch) {
+		if(err) throw err;
+		callback(null, isMatch);
+	});
+}

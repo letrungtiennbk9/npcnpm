@@ -70,20 +70,20 @@
 				<div class="row">
 					<%include account_nav%>
 					<div class="right col-lg-9">
-						<h4 class="mb-sm-4 mb-3">Thông tin tài khoản | <span style="color: #e24f38">Username</span></h4>
+						<h4 class="mb-sm-4 mb-3">Thông tin tài khoản | <span style="color: #e24f38"><%=user.username%></span></h4>
 						<hr class="m-0">
 						<div class="col-lg-3">
 							<img src="/images/img-01.png" width="150px" height="150px">
 						</div>
 						<div class="col-lg-6">
-							<p>Full name</p>
+							<p><%=user.fullname%></p>
 							<p>Gender</p>
 							<div class="view-contact">
 								<a class="mb-2" data-toggle="collapse" href="#collapseContact" role="button" aria-expanded="false" aria-controls="collapseContact">Xem thông tin liên hệ <i class="fa fa-angle-down"></i> </a>
 								<div class="collapse" id="collapseContact" style="margin-top: 10px">
-									<p>Số điện thoại: </p>
-									<p>Email: </p>
-									<p>Facebook: </p>
+									<p>Số điện thoại: <%=user.phone%></p>
+									<p>Email: <%=user.email%></p>
+									<p>Facebook: <%=user.facebook%></p>
 								</div>
 							</div>
 						</div>

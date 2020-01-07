@@ -1,11 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var userController = require('../controllers/userController');
+
 //thông tin tài khoản
 router.get('/', userController.userInfo);
-
-//trang quên mật khẩu
-router.get('/quen-mat-khau',userController.forgotPassword);
 
 //trang đổi mật khẩu
 router.get('/doi-mat-khau',userController.changePasswordPage);
@@ -33,9 +31,6 @@ router.post('/sua-san-pham',userController.editProduct);
 
 //xem san pham đã đăng
 router.get('/san-pham',userController.listProducts);
-
-//lịch sử mua hàng
-router.get('/lich-su-mua-hang',userController.history);
 
 //đánh giá người bán
 router.post('/danh-gia',userController.reviewUser);
