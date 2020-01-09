@@ -268,7 +268,7 @@
 										%>
 										<tr>
 											<td><img width="60px" height="60px" src="/images/img-01.png"></td>
-											<td><a href="/"><%=review.reviewedByUserId.username%></a></td>
+											<td><a href="/info?id=<%=review.reviewedByUserId._id%>"><%=review.reviewedByUserId.username%></a></td>
 											<td class="text-center"><%=review.review%></td>
 											<td class="pending"><%=review.point%>/5</td>
 											<td><%=getDateCreated(review.created_at)%></td>
@@ -490,6 +490,9 @@
         			}).done(function(res){
         				var html= '<tr>	<td><img width="60px" height="60px" src="/images/img-01.png"></td><td><a href="/">'+username+'</a></td><td class="text-center">'+res.review.review+'</td><td class="pending">'+res.review.point+'/5</td><td>Vừa xong</td></tr>';
         				$('.prepend-review').prepend(html);
+        				$('textarea[name="review_content"]').val('');
+        				$('input[name="rate"]').prop('checked', false);
+        				$('.rate label').css({color:'#ccc'});
         			}).fail(function(res){
         				var ms = res.responseJSON;
 						if(res.status==422){

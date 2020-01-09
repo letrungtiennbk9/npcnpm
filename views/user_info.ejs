@@ -108,7 +108,7 @@
 										%>
 										<tr>
 											<td><img width="60px" height="60px" src="/images/img-01.png"></td>
-											<td><a href="/"><%=review.reviewedByUserId.username%></a></td>
+											<td><a href="/info?id=<%=review.reviewedByUserId._id%>"><%=review.reviewedByUserId.username%></a></td>
 											<td >Uy tín</td>
 											<td class="pending text-center"><%=review.point%>/5</td>
 											<td class="text-center"><%=getDateCreated(review.created_at)%></td>

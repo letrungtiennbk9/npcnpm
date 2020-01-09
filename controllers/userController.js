@@ -42,12 +42,12 @@ exports.userRegister = function(req,res,next){
 	if (!errors.isEmpty()) {
 		return res.status(422).send(errors);
 	}
-	User.find({username:username},function(err,user){
-		if(error){
+	User.findOne({username:req.body.username},function(err,user){
+		if(err){
 			return res.status(503).send(err);
 		}
-		if(user){
-			return res.send(422).send({errors:[{msg:'Tên tài khoản đã tồn tại',param:'username'}]});
+		else if(user){
+			return res.status(422).send({errors:[{msg:'Tên tài khoản đã tồn tại',param:'username'}]});
 		}
 		let newUser = new User({
 			username: req.body.username,
