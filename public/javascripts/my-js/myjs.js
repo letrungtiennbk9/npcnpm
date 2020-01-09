@@ -8,11 +8,12 @@ $(document).ready(function () {
     let fd = new FormData();
     fd.append('name', $('#input-product-name')[0].value);
     fd.append('categoryId', $('#input-category')[0].value);
-    fd.append('userId', '5e14b656a25e681f75ff5917');
+    fd.append('userId', $('#user-id')[0].innerText);
     fd.append('price', $('#input-price')[0].value);
     fd.append('detail', $('#input-details')[0].value);
     fd.append('location', $('#input-location')[0].value);
     fd.append('brand', $('#input-brand')[0].value);
+    fd.append('status', $('#input-status')[0].value);
     fd.append('productImage', $('#input-image-1')[0].files[0]);
 
     $.ajax({

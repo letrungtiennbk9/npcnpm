@@ -26,7 +26,7 @@ router.get('/logout',userController.logoutUser);
 router.post('/login',userController.userLogin);
 
 //thực hiện đăng ký
-router.post('/register',userController.validator,userController.userRegister);
+router.post('/register',userController.validateCreateAccount,userController.userRegister);
 
 //trang quên mật khẩu
 router.get('/quen-mat-khau',redirectIfLogged,userController.forgotPassword);

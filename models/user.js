@@ -76,3 +76,17 @@ module.exports.comparePassword = (candidatePassword, hash, callback) => {
 		callback(null, isMatch);
 	});
 }
+
+module.exports.updateInfo = function (user, callback) {
+	user.save(callback);
+}
+
+module.exports.updatePassword = function (newUser, callback) {
+	var bcrypt = require('bcryptjs');
+	bcrypt.genSalt(10, function (err, salt) {
+		bcrypt.hash(newUser.password, salt, function (err, hash) {
+			newUser.password = hash;
+			newUser.save(callback);
+		});
+	});
+}

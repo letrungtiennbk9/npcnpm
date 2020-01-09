@@ -27,6 +27,8 @@
 	<!-- Custom stlylesheet -->
 	<link type="text/css" rel="stylesheet" href="/stylesheets/style.css"/>
 
+	<link rel="stylesheet" href="stylesheets/main.css">
+
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -36,11 +38,11 @@
 	</head>
 	<body>
 		<!-- HEADER -->
-	<%include header%>
-	<!-- /HEADER -->
+		<%include header%>
+		<!-- /HEADER -->
 
-	<!--NAV BAR-->
-	<%include nav-bar%>
+		<!--NAV BAR-->
+		<%include nav-bar%>
 
 		<!-- BREADCRUMB -->
 		<div id="breadcrumb" class="section">
@@ -84,8 +86,44 @@
 									<p>Số điện thoại: <%=user.phone%></p>
 									<p>Email: <%=user.email%></p>
 									<p>Facebook: <%=user.facebook%></p>
+									<p>Address: <%=user.address%></p>
 								</div>
 							</div>
+						</div>
+						<div class="col-lg-12">
+							<h4 class="mb-sm-4 mb-3 mt-30">Đánh giá</h4>
+							<hr class="m-0">
+							<table class="user-posts border" style="width: 100%">
+								<thead>
+									<tr>
+										<td>Hình ảnh</td>
+										<td>Người đánh giá</td>
+										<td>Nội dung</td>
+										<td class="text-center">Điểm</td>
+										<td class="text-center">Ngày đăng</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><img width="60px" height="60px" src="/images/img-01.png"></td>
+										<td><a href="/">Nguyễn văn A</a></td>
+										<td >Uy tín</td>
+										<td class="pending text-center">5/5</td>
+										<td class="text-center">01/01/2019</td>
+
+									</tr>
+
+									<tr>
+										<td><img width="60px" height="60px" src="/images/img-01.png"></td>
+										<td><a href="/">Nguyễn văn B</a></td>
+										<td>sản phẩm chất lượng , phục vị tốt ,hàng hàng tốt</td>
+										<td class="pending text-center">4/5</td>
+										<td class="text-center">01/01/2019</td>
+
+									</tr>
+
+								</tbody>
+							</table>
 						</div>
 					</div>
 				</div>

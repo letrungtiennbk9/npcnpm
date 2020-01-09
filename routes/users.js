@@ -9,13 +9,13 @@ router.get('/', userController.userInfo);
 router.get('/doi-mat-khau',userController.changePasswordPage);
 
 //thực hiện thay đổi mật khẩu
-router.post('/doi-mat-khau',userController.changePassword);
+router.post('/doi-mat-khau',userController.validateUpdatePassword,userController.changePassword);
 
 //trang sửa đổi thông tin tài khoản
 router.get('/sua-thong-tin',userController.editUserInfoPage);
 
 //thực hiện thay đổi thông tin tài khoản
-router.post('/sua-thong-tin',userController.editUserInfo);
+router.post('/sua-thong-tin',userController.validateUpdateInfo,userController.editUserInfo);
 
 //trang đăng sản phẩm
 router.get('/dang-san-pham',userController.postProductPage);
