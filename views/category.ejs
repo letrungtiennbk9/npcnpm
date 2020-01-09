@@ -30,7 +30,7 @@
 	<script defer src="javascripts/jquery.min.js"></script>
 
 	<script defer src="javascripts/jquery.nice-select.js"></script>
-	<script defer src="javascripts/myjs.js"></script>
+	<script defer src="javascripts/my-js/myjs.js"></script>
 
 
 	<link rel="stylesheet" href="stylesheets/nice-select.css">
@@ -77,13 +77,59 @@
 			<div class="row">
 				<!-- ASIDE -->
 				<div id="aside" class="col-md-3">
+					<!-- aside Widget -->
+					<div class="aside">
+						<h3 class="aside-title">Danh mục</h3>
+						<div class="checkbox-filter type-filter">
+							<div class="input-checkbox">
+								<input value="1" type="checkbox" id="category-20" onclick="dc.filter();">
+								<label for="category-20">
+									<span></span>
+									Bất động sản
+								</label>
+							</div>
+
+							<div class="input-checkbox">
+								<input value="2" type="checkbox" id="category-24" onclick="dc.filter();">
+								<label for="category-24">
+									<span></span>
+									Xe cộ
+								</label>
+							</div>
+
+							<div class="input-checkbox">
+								<input value="3" type="checkbox" id="category-23" onclick="dc.filter();">
+								<label for="category-23">
+									<span></span>
+									Thời trang
+								</label>
+							</div>
+
+							<div class="input-checkbox">
+								<input value="4" type="checkbox" id="category-21" onclick="dc.filter();">
+								<label for="category-21">
+									<span></span>
+									Đồ điện tử
+								</label>
+							</div>
+
+							<div class="input-checkbox">
+								<input value="5" type="checkbox" id="category-22" onclick="dc.filter();">
+								<label for="category-22">
+									<span></span>
+									Giải trí
+								</label>
+							</div>
+						</div>
+					</div>
+					<!-- /aside Widget -->
 
 					<!-- aside Widget -->
 					<div class="aside">
 						<h3 class="aside-title">Tỉnh thành</h3>
-						<div class="checkbox-filter">
+						<div class="checkbox-filter location-filter">
 							<div class="input-checkbox">
-								<input type="checkbox" id="category-1">
+								<input value="1" type="checkbox" id="category-1" onclick="dc.filter();">
 								<label for="category-1">
 									<span></span>
 									Hồ Chí Minh
@@ -91,7 +137,7 @@
 							</div>
 
 							<div class="input-checkbox">
-								<input type="checkbox" id="category-2">
+								<input value="2" type="checkbox" id="category-2" onclick="dc.filter();">
 								<label for="category-2">
 									<span></span>
 									Hà Nội
@@ -99,7 +145,7 @@
 							</div>
 
 							<div class="input-checkbox">
-								<input type="checkbox" id="category-3">
+								<input value="3" type="checkbox" id="category-3" onclick="dc.filter();">
 								<label for="category-3">
 									<span></span>
 									Đà Nẵng
@@ -107,7 +153,7 @@
 							</div>
 
 							<div class="input-checkbox">
-								<input type="checkbox" id="category-4">
+								<input value="4" type="checkbox" id="category-4" onclick="dc.filter();">
 								<label for="category-4">
 									<span></span>
 									Huế
@@ -115,7 +161,7 @@
 							</div>
 
 							<div class="input-checkbox">
-								<input type="checkbox" id="category-5">
+								<input value="5" type="checkbox" id="category-5" onclick="dc.filter();">
 								<label for="category-5">
 									<span></span>
 									Cần Thơ
@@ -128,8 +174,7 @@
 					<!-- aside Widget -->
 					<div class="aside">
 						<h3 class="aside-title">Thời gian đăng</h3>
-						<div class="checkbox-filter">
-
+						<div class="checkbox-filter time-filter">
 							<div class="input-checkbox">
 								<input type="checkbox" id="category-6">
 								<label for="category-6">
@@ -165,7 +210,7 @@
 					<!-- aside Widget -->
 					<div class="aside">
 						<h3 class="aside-title">Tình trang sản phẩm</h3>
-						<div class="checkbox-filter">
+						<div class="checkbox-filter status-filter">
 
 							<div class="input-checkbox">
 								<input type="checkbox" id="category-9">
@@ -211,8 +256,6 @@
 									<small>(1450)</small>
 								</label>
 							</div>
-
-
 						</div>
 					</div>
 					<!-- /aside Widget -->
@@ -230,17 +273,13 @@
 							</div>
 							<span>-</span>
 							<div class="input-number price-max">
-								<input id="price-max" type="number">
+								<input id="amount" type="number">
 								<span class="qty-up">+</span>
 								<span class="qty-down">-</span>
 							</div>
 						</div>
 					</div>
 					<!-- /aside Widget -->
-
-
-
-
 				</div>
 				<!-- /ASIDE -->
 
@@ -251,14 +290,15 @@
 						<div class="store-sort">
 							<label>
 								Sắp xếp
-								<select class="input-select">
-									<option value="0">Giá thấp đến cao</option>
-									<option value="1">Giá cao đến thấp</option>
+								<select id="sort-filter" class="input-select">
+									<option value="1">Mặc định</option>
+									<option value="2">Giá thấp đến cao</option>
+									<option value="3">Giá cao đến thấp</option>
 								</select>
 							</label>
 
 							<label>
-								<input id="input-product-name" class="input" type="text" name="name" placeholder="Tìm kiếm sản phẩm">
+								<input id="input-product-name" class="input search-txt" type="text" name="name" placeholder="Tìm kiếm sản phẩm">
 							</label>
 						</div>
 						<ul class="store-grid">
@@ -341,6 +381,7 @@
 	<script src="javascripts/nouislider.min.js"></script>
 	<script src="javascripts/jquery.zoom.min.js"></script>
 	<script src="javascripts/main.js"></script>
+	<script src="javascripts/my-js/filter.js"></script>
 
 </body>
 
