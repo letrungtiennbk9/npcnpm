@@ -43,7 +43,7 @@
 
 </head>
 
-<body>
+<body onload="dc.loadMoreNew(1);">
 	<!-- HEADER -->
 	<%include header%>
 	<!-- /HEADER -->
@@ -172,7 +172,7 @@
 					<!-- /aside Widget -->
 
 					<!-- aside Widget -->
-					<div class="aside">
+					<!-- <div class="aside">
 						<h3 class="aside-title">Thời gian đăng</h3>
 						<div class="checkbox-filter time-filter">
 							<div class="input-checkbox">
@@ -201,10 +201,8 @@
 									<small>(1450)</small>
 								</label>
 							</div>
-
-
 						</div>
-					</div>
+					</div> -->
 					<!-- /aside Widget -->
 
 					<!-- aside Widget -->
@@ -213,7 +211,7 @@
 						<div class="checkbox-filter status-filter">
 
 							<div class="input-checkbox">
-								<input type="checkbox" id="category-9">
+								<input value="1" type="checkbox" id="category-9" onclick="dc.filter();">
 								<label for="category-9">
 									<span></span>
 									Mới hoàn toàn
@@ -222,7 +220,7 @@
 							</div>
 
 							<div class="input-checkbox">
-								<input type="checkbox" id="category-10">
+								<input value="2" type="checkbox" id="category-10" onclick="dc.filter();">
 								<label for="category-10">
 									<span></span>
 									Như mới
@@ -231,7 +229,7 @@
 							</div>
 
 							<div class="input-checkbox">
-								<input type="checkbox" id="category-11">
+								<input value="3" type="checkbox" id="category-11" onclick="dc.filter();">
 								<label for="category-11">
 									<span></span>
 									Mới vừa
@@ -240,7 +238,7 @@
 							</div>
 
 							<div class="input-checkbox">
-								<input type="checkbox" id="category-12">
+								<input value="4" type="checkbox" id="category-12" onclick="dc.filter();">
 								<label for="category-12">
 									<span></span>
 									Khá mới
@@ -249,7 +247,7 @@
 							</div>
 
 							<div class="input-checkbox">
-								<input type="checkbox" id="category-13">
+								<input value="5" type="checkbox" id="category-13" onclick="dc.filter();">
 								<label for="category-13">
 									<span></span>
 									Khá cũ
@@ -263,20 +261,15 @@
 
 					<!-- aside Widget -->
 					<div class="aside">
-						<h3 class="aside-title">Giá</h3>
+						<h3 class="aside-title">Giá dưới</h3>
 						<div class="price-filter">
 							<div id="price-slider"></div>
-							<div class="input-number price-min">
-								<input id="price-min" type="number">
-								<span class="qty-up">+</span>
-								<span class="qty-down">-</span>
-							</div>
-							<span>-</span>
 							<div class="input-number price-max">
-								<input id="amount" type="number">
+								<input type="number" id="amount">
 								<span class="qty-up">+</span>
 								<span class="qty-down">-</span>
 							</div>
+							<button onclick="dc.filter();" class="button-primary">OK</button>
 						</div>
 					</div>
 					<!-- /aside Widget -->
@@ -291,14 +284,14 @@
 							<label>
 								Sắp xếp
 								<select id="sort-filter" class="input-select">
-									<option value="1">Mặc định</option>
-									<option value="2">Giá thấp đến cao</option>
-									<option value="3">Giá cao đến thấp</option>
+									<option onclick="dc.sort('normal')" value="1">Mặc định</option>
+									<option onclick="dc.sort('priceAsc');" value="2">Giá thấp đến cao</option>
+									<option onclick="dc.sort('priceDsc');" value="3">Giá cao đến thấp</option>
 								</select>
 							</label>
 
 							<label>
-								<input id="input-product-name" class="input search-txt" type="text" name="name" placeholder="Tìm kiếm sản phẩm">
+								<input class="input search-txt" type="text" name="name" placeholder="Tìm kiếm sản phẩm">
 							</label>
 						</div>
 						<ul class="store-grid">
@@ -316,13 +309,12 @@
 
 					<!-- store bottom filter -->
 					<div class="store-filter clearfix">
-						<span class="store-qty">Showing 20-100 products</span>
 						<ul class="store-pagination" id="page-pagination">
-							<li class="page-item active">1</li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+							<li onclick="dc.loadMoreNew(1);" class="page-item active">1</li>
+							<li onclick="dc.loadMoreNew(2);" ><a href="#">2</a></li>
+							<li onclick="dc.loadMoreNew(3);" ><a href="#">3</a></li >
+							<li onclick="dc.loadMoreNew(4);" ><a href="#">4</a></li>
+							<li onclick="dc.loadMoreNew(5);" ><a href="#"><i class="fa fa-angle-right"></i></a></li>
 						</ul>
 					</div>
 					<!-- /store bottom filter -->

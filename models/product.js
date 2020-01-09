@@ -6,7 +6,7 @@ var productSchema = mongoose.Schema({
 		required: true
 	},
 	categoryId:{
-		type:Schema.Types.ObjectId,
+		type:Number,
 		required:true,
 		ref: 'Category'
 	},
@@ -19,10 +19,10 @@ var productSchema = mongoose.Schema({
 		type:Schema.Types.ObjectId,
 		ref:'Brand'		
 	},
-	images:[{
+	images:{
 		type:String,
 		required:true,
-	}],
+	},
 	price:{
 		type:Number,
 		required:true,
@@ -46,7 +46,6 @@ var productSchema = mongoose.Schema({
 	},
 	sold:{
 		type:Date,
-		required:true,
 		default:null,
 	},
 	status:{
@@ -54,22 +53,20 @@ var productSchema = mongoose.Schema({
 	},
 	pending:{
 		type:Number,
-		required:true
+		required:true,
+		default: 1
 	},
-	approvedOrRefusedBy:{
-		adminId:{
-			type: Schema.Types.ObjectId,
-			ref: 'Admin',
-			default:null
-		},
-		at:{
-			type: Date,
-			default:null
-		}
+	checkedBy:{
+		type: Schema.Types.ObjectId,
+		ref: 'Admin',
+		default:null
+	},
+	checkedAt:{
+		type: Date,
+		default:null
 	},
 	deleted_at:{
 		type:Date,
-		required:true,
 		default:null
 	},
 	created_at: { 

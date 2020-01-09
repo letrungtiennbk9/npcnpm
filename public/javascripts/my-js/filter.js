@@ -1,6 +1,6 @@
 (function (global) {
   let dc = {};
-  let nItems = 8;
+  let nItems = 6;
   let nLoaded = 0;
   let nTurn = 0;
   let sortType = "normal";
@@ -147,29 +147,50 @@
   }
 
   dc.sort = (type) => {
+    console.log('sort');
     sortType = type;
     nTurn = 0;
     nLoaded = 0;
     dc.loadMoreNew(1);
   }
 
-  $("#sort-filter option").each(function () {
-    if ($(this)[0].value == 1) {
-      $(this).attr('onclick', () => {
-        return "dc.sort('normal')";
-      })
+  // $("#sort-filter option").each(function () {
+  //   if ($(this)[0].value == 1) {
+  //     $(this).attr('onclick', () => {
+  //       return "dc.sort('normal')";
+  //     })
+  //   }
+
+  //   if ($(this)[0].value == 2) {
+  //     $(this).attr('onclick', () => {
+  //       return "dc.sort('priceAsc')";
+  //     })
+  //   }
+
+  //   if ($(this)[0].value == 3) {
+  //     $(this).attr('onclick', () => {
+  //       return "dc.sort('priceDsc')";
+  //     })
+  //   }
+  // });
+
+  $('#sort-filter').change(() => {
+    if ($('#sort-filter')[0].value == 1) {
+      dc.sort('normal');
     }
 
-    if ($(this)[0].value == 2) {
-      $(this).attr('onclick', () => {
-        return "dc.sort('priceAsc')";
-      })
+    if ($('#sort-filter')[0].value == 2) {
+      dc.sort('priceAsc');
     }
 
-    if ($(this)[0].value == 3) {
-      $(this).attr('onclick', () => {
-        return "dc.sort('priceDsc')";
-      })
+    if ($('#sort-filter')[0].value == 3) {
+      dc.sort('priceDsc');
+    }
+  });
+
+  $(".search-txt").on('keyup', function (e) {
+    if (e.keyCode === 13) {
+      dc.filter();
     }
   });
 
