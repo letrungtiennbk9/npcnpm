@@ -1,4 +1,4 @@
-(function(global){
+(function (global) {
   let dc = {};
   let nItems = 8;
   let nLoaded = 0;
@@ -26,7 +26,7 @@
     realProductsDbUrl = encodeURI(realProductsDbUrl);
     let delta;
     await $.get(realProductsDbUrl, (res, status) => {
-      data=res;
+      data = res;
       delta = res.length;
       nTurn++;
     });
@@ -36,11 +36,31 @@
 
   buildView = () => {
     let finalHtml = "";
-    for(let i=0; i<data.length; i++){
-      let tmp = insertProperty(snippet, "title", data[i].title);
+    for (let i = 0; i < data.length; i++) {
+      let tmp = insertProperty(snippet, "title", data[i].name);
       tmp = insertProperty(tmp, "price", data[i].price);
-      tmp = insertProperty(tmp, "imagePath", data[i].imagePath);
+      tmp = insertProperty(tmp, "imagePath", data[i].images);
       tmp = insertProperty(tmp, "_id", data[i]._id);
+      console.log(data[i].location);
+      switch (data[i].location) {
+        case 1:
+          tmp = insertProperty(tmp, "location", "Tp.Hồ Chí Minh");
+          break;
+        case 2:
+          tmp = insertProperty(tmp, "location", "Hà Nội");
+          break;
+        case 3:
+          tmp = insertProperty(tmp, "location", "Đà Nẵng");
+          break;
+        case 4:
+          tmp = insertProperty(tmp, "location", "Cần Thơ");
+          break;
+        case 5:
+          tmp = insertProperty(tmp, "location", "Huế");
+          break;
+        default:
+        // code block
+      }
       finalHtml += tmp;
     }
     $("#category-single-product-section").empty();
@@ -49,12 +69,12 @@
 
 
   activePageNum = (pageNum) => {
-    $('#page-pagination .page-item').each(function() {
-      if($(this).hasClass("active")){
+    $('#page-pagination .page-item').each(function () {
+      if ($(this).hasClass("active")) {
         $(this).removeClass("active");
       }
-  
-      if(parseInt($(this)[0].innerText) == pageNum){
+
+      if (parseInt($(this)[0].innerText) == pageNum) {
         $(this).addClass("active");
       }
     });
@@ -63,21 +83,21 @@
 
   dc.loadMoreNew = (nPage) => {
     activePageNum(nPage);
-    
+
     (async () => {
-      if(nPage*nItems > nLoaded){
+      if (nPage * nItems > nLoaded) {
         await dc.getData();
       }
-  
-      $('.f_p_item').each(function(i){
-        if($(this)[0].style.display == 'block'){
+
+      $('.f_p_item').each(function (i) {
+        if ($(this)[0].style.display == 'block') {
           $(this)[0].style.display = 'none';
         }
       });
-  
-      $('.f_p_item').each(function(i){
-        if(i>=nItems*(nPage-1) && (i<nItems*nPage)){
-          if($(this)[0].style.display == 'none'){
+
+      $('.f_p_item').each(function (i) {
+        if (i >= nItems * (nPage - 1) && (i < nItems * nPage)) {
+          if ($(this)[0].style.display == 'none') {
             $(this)[0].style.display = 'block';
           }
         }
@@ -88,16 +108,24 @@
 
   dc.filter = () => {
     let tmpQueryStr = "?type=";
-    $(".type-filter input").each(function() {
-      if($(this)[0].checked){
+    $(".type-filter input").each(function () {
+      if ($(this)[0].checked) {
         tmpQueryStr += $(this)[0].value + ",";
       }
     });
     tmpQueryStr = tmpQueryStr.substring(0, tmpQueryStr.length - 1);
 
-    tmpQueryStr += "&brand=";
-    $(".brand-filter input").each(function() {
-      if($(this)[0].checked){
+    tmpQueryStr += "&location=";
+    $(".location-filter input").each(function () {
+      if ($(this)[0].checked) {
+        tmpQueryStr += $(this)[0].value + ",";
+      }
+    });
+    tmpQueryStr = tmpQueryStr.substring(0, tmpQueryStr.length - 1);
+
+    tmpQueryStr += "&status=";
+    $(".status-filter input").each(function () {
+      if ($(this)[0].checked) {
         tmpQueryStr += $(this)[0].value + ",";
       }
     });
@@ -106,21 +134,8 @@
     tmpQueryStr += "&title=";
     tmpQueryStr += $('.search-txt')[0].value;
 
-    if($('.search-txt')[0].value == ""){
-      tmpQueryStr += $('#advanced-search')[0].value;
-    }
-
-    tmpQueryStr += "&color=";
-    $(".color-filter input").each(function() {
-      if($(this)[0].checked){
-        tmpQueryStr += $(this)[0].value + ",";
-      }
-    });
-
     tmpQueryStr += '&price=';
-    setTimeout(() => {
-      tmpQueryStr += $('#amount')[0].value + '';
-    }, 300);
+    tmpQueryStr += $('#amount')[0].value + '';
 
     tmpQueryStr = tmpQueryStr.substring(0, tmpQueryStr.length - 1);
     queryStr = tmpQueryStr;
@@ -138,20 +153,20 @@
     dc.loadMoreNew(1);
   }
 
-  $(".nice-select.sorting li").each(function(){
-    if($(this).attr("data-value") == 1){
+  $("#sort-filter option").each(function () {
+    if ($(this)[0].value == 1) {
       $(this).attr('onclick', () => {
         return "dc.sort('normal')";
       })
     }
 
-    if($(this).attr("data-value") == 2){
+    if ($(this)[0].value == 2) {
       $(this).attr('onclick', () => {
         return "dc.sort('priceAsc')";
       })
     }
 
-    if($(this).attr("data-value") == 3){
+    if ($(this)[0].value == 3) {
       $(this).attr('onclick', () => {
         return "dc.sort('priceDsc')";
       })
