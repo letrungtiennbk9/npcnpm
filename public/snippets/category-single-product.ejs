@@ -10,9 +10,28 @@
       <h4 class="product-price">{{price}}</h4>
     </div>
     <div class="add-to-cart">
-      <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Quan tâm</button>
-      <div style="width: 0em; height: 0em; overflow: hidden;">{{_id}}</div>
+      <button  type="button" id="addwishlist" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>{{_id}} add to
+        Wishlist</button>
+      <input class="input" type="text" id="proid" value="{{_id}}" hidden  placeholder="{{_id}}">
     </div>
   </div>
 </div>
 <!-- /product -->
+
+<script>
+	$(document).ready(function () {
+		var from, userid,proid;
+		$("#addwishlist").click(function () {
+      // let value=document.getElementById('cartnumber').innerHTML;
+      //   document.getElementById('cartnumber').innerHTML=parseInt(value)+parseInt(1);
+    //	userid = $("#userid").val();
+    proid=$("#proid").val();
+			$.get("category/them-vao-wishlist", { productid:proid }, function (data) {
+				confirm.log("vo dc")
+				// if (data == "sent") {
+				// 	$("#message").empty().html("<p>Email is been sent at " + to + " . Please check inbox !</p>");
+				// }
+			});
+		});
+	});
+</script>

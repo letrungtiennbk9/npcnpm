@@ -210,6 +210,30 @@ exports.listProducts = function(req,res,next){
 		}	
 	})
 };
+// ,options:{populate:{path:'wishlist'}}
+exports.wishList =function(req,res,next){
+	let id = req.user._id;
+	User.findById(id).populate({path:'wishlist.productid'}).exec(function(err,user){
+		if(err){
+			console.log(err); 
+
+			return res.status(503).send(err);
+		}
+		else{
+			let products=[]
+			console.log(user.wishlist.length+"1111");
+			for(product in user.wishlist){
+				if(user.wishlist[product]!=null)
+				products.push(user.wishlist[product].productid)
+			}
+
+			console.log(products);
+			
+			return res.render('wish_list',{products:products});
+	}
+	})
+
+}
 
 //lịch sử mua hàng
 exports.history = function(req,res,next){
@@ -355,3 +379,4 @@ exports.logoutUser = (req, res) => {
 	req.logOut();
 	return res.redirect('/');
 }
+

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>Electro - HTML Ecommerce Template</title>
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.min.css" />
+
+	<!-- Slick -->
+	<link type="text/css" rel="stylesheet" href="/stylesheets/slick.css" />
+	<link type="text/css" rel="stylesheet" href="/stylesheets/slick-theme.css" />
+
+	<!-- nouislider -->
+	<link type="text/css" rel="stylesheet" href="/stylesheets/nouislider.min.css" />
+
+	<!-- Font Awesome Icon -->
+	<link rel="stylesheet" href="/stylesheets/font-awesome.min.css">
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="/stylesheets/style.css" />
+
+	<style type="text/css">
+	.review_box p {
+  margin-bottom: 0px;
+  display: inline-block;
+  font-weight: 500;
+}
+
+/* line 1059, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
+.review_box .list {
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* line 1064, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
+.review_box .list li {
+  display: inline-block;
+}
+
+/* line 1067, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
+.review_box .list li a {
+  display: inline-block;
+  color: #fbd600;
+}
+
+/* line 1074, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
+.review_box .form-control {
+  height: 50px;
+  border-radius: 0;
+}
+
+/* line 1078, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
+.review_box ::placeholder {
+  font-size: 14px;
+}
+
+/* line 1081, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
+.review_box .btn_3 {
+  padding: 13px 39px;
+}
+
+/* line 1084, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_product.scss */
+.review_box .contact_form {
+  margin-top: 15px;
+}
+		/*-- acouunt--*/
+		.user-posts td {
+			padding: 20px;
+		}
+
+		.user-posts thead {
+			background: #7e5128;
+			color: #FFFFFF;
+		}
+
+		.user-posts {
+			border: 1px solid #e5e7ed;
+		}
+
+		.user-posts tbody tr {
+			border-bottom: 1px solid #e5e7ed;
+		}
+
+		.user-posts .pending {
+			color: #afa951;
+			font-weight: bold;
+		}
+
+		.user-posts .accept {
+			color: #117711;
+			font-weight: bold;
+		}
+
+		.user-posts .refuse {
+			color: #969696;
+			font-weight: bold;
+		}
+	</style>
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+</head>
+
+<body>
+	<!-- HEADER -->
+	<%include header%>
+	<!-- /HEADER -->
+
+	<!--NAV BAR-->
+	<%include nav-bar%>
+
+	<!-- BREADCRUMB -->
+	<div id="breadcrumb" class="section">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<div class="col-md-12">
+					<ul class="breadcrumb-tree">
+						<li><a href="#">Trang chủ</a></li>
+						<li><a href="#">Sản phẩm</a></li>
+						<li class="active">Thông tin người bán</li>
+					</ul>
+				</div>
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /BREADCRUMB -->
+
+	<!-- SECTION -->
+	<div class="section">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<div class="col-lg-6">
+					<h4 class="mb-sm-4 mb-3">Thông tin người bán </span></h4>
+					<hr class="m-0">
+					<div class="col-lg-3">
+						<img src="/images/img-01.png" width="100px" height="100px">
+					</div>
+					<div class="col-lg-5">
+						<p>Full name</p>
+						<p>Gender</p>
+						<div class="view-contact">
+							<a class="mb-2" data-toggle="collapse" href="#collapseContact" role="button"
+								aria-expanded="false" aria-controls="collapseContact">Xem thông tin liên hệ <i
+									class="fa fa-angle-down"></i> </a>
+							<div class="collapse" id="collapseContact" style="margin-top: 10px">
+								<p>Số điện thoại: </p>
+								<p>Email: </p>
+								<p>Facebook: </p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="review_box">
+						<h4>Thêm đánh giá</h4>
+						<p>Đánh giá của bạn:</p>
+						<ul class="list">
+							<li>
+								<a href="#">
+									<i class="fa fa-star"></i>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fa fa-star"></i>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fa fa-star"></i>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fa fa-star"></i>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fa fa-star"></i>
+								</a>
+							</li>
+						</ul>
+						<p>Nổi bật</p>
+						<form class="row contact_form">
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="text" class="form-control" name="name" placeholder="Họ và Tên" />
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+									<textarea class="form-control" name="message" rows="1"
+										placeholder="Đánh giá"></textarea>
+								</div>
+							</div>
+							<div class="col-md-12 text-right">
+								<button type="submit" value="submit" class="primary-btn">
+									Gửi
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			
+		</div>
+		<!-- /row -->
+	</div>
+	<!-- /container -->
+	</div>
+	<!-- /Section -->
+
+	<div class="section">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<!-- <div class="right col-lg-9">
+                            <h4 class="mb-sm-4 mb-3">Danh sách đánh giá </h4>
+                            <hr class="m-0">
+						</div> -->
+				<table class="user-posts border">
+					<thead>
+						<tr class="text-center">
+							<td>Hình ảnh</td>
+							<td>Người đánh giá</td>
+							<td>Nội dung</td>
+							<td>Điểm</td>
+							<td>Ngày đăng</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><img width="60px" height="60px" src="/images/img-01.png"></td>
+							<td><a href="/">Nguyễn văn A</a></td>
+							<td class="text-center">Uy tín</td>
+							<td class="pending">5/5</td>
+							<td>01/01/2019</td>
+
+						</tr>
+
+						<tr>
+							<td><img width="60px" height="60px" src="/images/img-01.png"></td>
+							<td><a href="/">Nguyễn văn B</a></td>
+							<td class="text-center">sản phẩm chất lượng , phục vị tốt ,hàng hàng tốt</td>
+							<td class="pending">4/5</td>
+							<td>01/01/2019</td>
+
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- /row -->
+
+	</div>
+	</div>
+
+	<!-- NEWSLETTER -->
+	<div id="newsletter" class="section">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<div class="col-md-12">
+					<div class="newsletter">
+						<p>Sign Up for the <strong>NEWSLETTER</strong></p>
+						<form>
+							<input class="input" type="email" placeholder="Enter Your Email">
+							<button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
+						</form>
+						<ul class="newsletter-follow">
+							<li>
+								<a href="#"><i class="fa fa-facebook"></i></a>
+							</li>
+							<li>
+								<a href="#"><i class="fa fa-twitter"></i></a>
+							</li>
+							<li>
+								<a href="#"><i class="fa fa-instagram"></i></a>
+							</li>
+							<li>
+								<a href="#"><i class="fa fa-pinterest"></i></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /NEWSLETTER -->
+
+	<!-- FOOTER -->
+	<footer id="footer">
+		<!-- top footer -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-3 col-xs-6">
+						<div class="footer">
+							<h3 class="footer-title">About Us</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+								incididunt ut.</p>
+							<ul class="footer-links">
+								<li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
+								<li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
+								<li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="col-md-3 col-xs-6">
+						<div class="footer">
+							<h3 class="footer-title">Categories</h3>
+							<ul class="footer-links">
+								<li><a href="#">Hot deals</a></li>
+								<li><a href="#">Laptops</a></li>
+								<li><a href="#">Smartphones</a></li>
+								<li><a href="#">Cameras</a></li>
+								<li><a href="#">Accessories</a></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="clearfix visible-xs"></div>
+
+					<div class="col-md-3 col-xs-6">
+						<div class="footer">
+							<h3 class="footer-title">Information</h3>
+							<ul class="footer-links">
+								<li><a href="#">About Us</a></li>
+								<li><a href="#">Contact Us</a></li>
+								<li><a href="#">Privacy Policy</a></li>
+								<li><a href="#">Orders and Returns</a></li>
+								<li><a href="#">Terms & Conditions</a></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="col-md-3 col-xs-6">
+						<div class="footer">
+							<h3 class="footer-title">Service</h3>
+							<ul class="footer-links">
+								<li><a href="#">My Account</a></li>
+								<li><a href="#">View Cart</a></li>
+								<li><a href="#">Wishlist</a></li>
+								<li><a href="#">Track My Order</a></li>
+								<li><a href="#">Help</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /top footer -->
+
+		<!-- bottom footer -->
+		<div id="bottom-footer" class="section">
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<ul class="footer-payments">
+							<li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
+							<li><a href="#"><i class="fa fa-credit-card"></i></a></li>
+							<li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
+							<li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
+							<li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
+							<li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
+						</ul>
+						<span class="copyright">
+							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+							Copyright &copy;
+							<script>document.write(new Date().getFullYear());</script> All rights reserved | This
+							template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a
+								href="https://colorlib.com" target="_blank">Colorlib</a>
+							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						</span>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /bottom footer -->
+	</footer>
+	<!-- /FOOTER -->
+
+	<!-- jQuery Plugins -->
+	<script src="/javascripts/jquery.min.js"></script>
+	<script src="/javascripts/bootstrap.min.js"></script>
+	<script src="/javascripts/slick.min.js"></script>
+	<script src="/javascripts/nouislider.min.js"></script>
+	<script src="/javascripts/jquery.zoom.min.js"></script>
+	<script src="/javascripts/main.js"></script>
+
+</body>
+
+</html>

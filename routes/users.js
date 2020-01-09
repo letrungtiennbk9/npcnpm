@@ -35,5 +35,6 @@ router.post('/view-contact',userController.viewContact);
 //đánh giá sản phẩm
 router.post('/danh-gia-san-pham',userController.reviewProduct);
 
+router.get('/wishlist',userController.wishList);
 
 module.exports = router;
