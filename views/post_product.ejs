@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,22 +11,22 @@
 
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
-	
+
 	<!-- Bootstrap -->
-	<link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.min.css"/>
-	
+	<link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.min.css" />
+
 	<!-- Slick -->
-	<link type="text/css" rel="stylesheet" href="/stylesheets/slick.css"/>
-	<link type="text/css" rel="stylesheet" href="/stylesheets/slick-theme.css"/>
-	
+	<link type="text/css" rel="stylesheet" href="/stylesheets/slick.css" />
+	<link type="text/css" rel="stylesheet" href="/stylesheets/slick-theme.css" />
+
 	<!-- nouislider -->
-	<link type="text/css" rel="stylesheet" href="/stylesheets/nouislider.min.css"/>
-	
+	<link type="text/css" rel="stylesheet" href="/stylesheets/nouislider.min.css" />
+
 	<!-- Font Awesome Icon -->
 	<link rel="stylesheet" href="/stylesheets/font-awesome.min.css">
-	
+
 	<!-- Custom stlylesheet -->
-	<link type="text/css" rel="stylesheet" href="/stylesheets/style.css"/>
+	<link type="text/css" rel="stylesheet" href="/stylesheets/style.css" />
 
 	<!--Modified-->
 	<link rel="stylesheet" href="/javascripts/owlcarousel/assets/owl.carousel.min.css">
@@ -33,10 +34,11 @@
 	<link rel="stylesheet" href="/stylesheets/my-style.css">
 
 </head>
+
 <body>
 
 	<style type="text/css">
-		.select-img{
+		.select-img {
 			position: absolute;
 			top: 50%;
 			left: 50%;
@@ -45,15 +47,17 @@
 			transform: translate(-50%, -50%);
 			background: #fbfbfc;
 			border-radius: 50%;
-			display : flex;
-			align-items : center;
+			display: flex;
+			align-items: center;
 			justify-content: center;
 		}
-		.temp-img{
+
+		.temp-img {
 			position: relative;
 			z-index: 2;
 		}
-		.product-img{
+
+		.product-img {
 			margin: 20px 0;
 			min-height: 150px;
 			cursor: pointer;
@@ -97,16 +101,17 @@
 					<hr class="m-0">
 					<form>
 						<div class="form-group">
-							<input id="input-product-name" class="input" type="text" name="name" placeholder="Tên mặt hàng" required="">
+							<input id="input-product-name" class="input" type="text" name="name" placeholder="Tên mặt hàng"
+								required="">
 						</div>
 						<div class="form-group">
 							<select id="input-category" class="input" name="category">
 								<option disabled="" selected>--Chọn loại mặt hàng--</option>
-								<option value="5e14afe21c9d440000fc27a5">--Bất động sản--</option>
-								<option value="5e14e6f194109d45d73312c1">--Xe cộ--</option>
-								<option value="5e14e6f194109d45d73312c0">--Thời trang--</option>
-								<option value="5e14e6f194109d45d73312c2">--Đồ điện tử--</option>
-								<option value="5e14e6f194109d45d73312c3">--Giải trí--</option>
+								<option value=1>--Bất động sản--</option>
+								<option value=2>--Xe cộ--</option>
+								<option value=3>--Thời trang--</option>
+								<option value=4>--Đồ điện tử--</option>
+								<option value=5>--Giải trí--</option>
 							</select>
 						</div>
 						<div class="form-group">
@@ -122,15 +127,15 @@
 						<div class="form-group">
 							<select id="input-location" class="input" name="location">
 								<option disabled="" selected>--Chọn vị trí--</option>
-								<option value=1 >--Tp.Hồ Chí Minh--</option>
-								<option value=2 >--Hà Nội--</option>
-								<option value=3 >--Đà Nẵng--</option>
-								<option value=4 >--Cần Thơ--</option>
-								<option value=5 >--Huế--</option>
+								<option value=1>--Tp.Hồ Chí Minh--</option>
+								<option value=2>--Hà Nội--</option>
+								<option value=3>--Đà Nẵng--</option>
+								<option value=4>--Cần Thơ--</option>
+								<option value=5>--Huế--</option>
 							</select>
 						</div>
 						<div class="form-group">
-							<input id="input-brand" class="input" type="text" placeholder="Hãng" name="brand" >
+							<input id="input-brand" class="input" type="text" placeholder="Hãng" name="brand">
 						</div>
 						<div class="form-group">
 							<div class="col-lg-3 relative product-img" data-target="image1" style="text-align: center;">
@@ -157,10 +162,14 @@
 									<span>Chọn ảnh</span>
 								</div>
 							</div>
-							<input id="input-image-1" class="input input-img" data-img="temp-img-1" type="file" name="image1" style="display: none;" accept="image/png,image/jpeg,image/jpg">
-							<input class="input input-img" data-img="temp-img-2" type="file" name="image2" style="display: none;" accept="image/png,image/jpeg,image/jpg">
-							<input class="input input-img" data-img="temp-img-3"type="file" name="image3" style="display: none;" accept="image/png,image/jpeg,image/jpg">
-							<input class="input input-img" data-img="temp-img-4"type="file" name="image4" style="display: none;" accept="image/png,image/jpeg,image/jpg">
+							<input id="input-image-1" class="input input-img" data-img="temp-img-1" type="file" name="image1"
+								style="display: none;" accept="image/png,image/jpeg,image/jpg">
+							<input class="input input-img" data-img="temp-img-2" type="file" name="image2" style="display: none;"
+								accept="image/png,image/jpeg,image/jpg">
+							<input class="input input-img" data-img="temp-img-3" type="file" name="image3" style="display: none;"
+								accept="image/png,image/jpeg,image/jpg">
+							<input class="input input-img" data-img="temp-img-4" type="file" name="image4" style="display: none;"
+								accept="image/png,image/jpeg,image/jpg">
 						</div>
 						<div class="form-group">
 							<input id="input-price" class="input" type="number" min="0" placeholder="Giá" name="price" required="">
@@ -168,7 +177,8 @@
 						<div class="form-group">
 							<textarea id="input-details" class="input" placeholder="Chi tiết" name="detail"></textarea>
 						</div>
-						<button id="submit-product" type="button" class="primary-btn" style="display: block;margin: 0 auto" name="">Đăng bài</button>
+						<button id="submit-product" type="button" class="primary-btn" style="display: block;margin: 0 auto"
+							name="">Đăng bài</button>
 					</form>
 				</div>
 			</div>
@@ -189,37 +199,36 @@
 	<script src="/javascripts/main.js"></script>
 	<script src="/javascripts/my-js/myjs.js"></script>
 	<script type="text/javascript">
-		$('#submit-product')[0].click(function(){
+		$('#submit-product')[0].click(function () {
 			console.log('submit product');
 		});
-		
-		$('.product-img').click(function(){
+
+		$('.product-img').click(function () {
 			var input = $(this).attr('data-target');
-			$('input[name="'+input+'"]').click();
+			$('input[name="' + input + '"]').click();
 		});
 
-		$(".input-img").change(function(){
+		$(".input-img").change(function () {
 			var img = $(this).attr('data-img');
-			if(this.files.length==0)
-			{
-				$('#'+img).removeAttr('src');
+			if (this.files.length == 0) {
+				$('#' + img).removeAttr('src');
 				return false;
 			}
-			
-			var el_img,src,type;
-			var count_image=0;
-			var arrtype=["jpg","jpeg","png","PNG"];
-			var file=this.files[0];
-			src=URL.createObjectURL(file);
-			type=file.name.split(".").pop().toLowerCase();
-			if($.inArray(type,arrtype)>-1)
-			{
-				$('#'+img).attr('src',src);
+
+			var el_img, src, type;
+			var count_image = 0;
+			var arrtype = ["jpg", "jpeg", "png", "PNG"];
+			var file = this.files[0];
+			src = URL.createObjectURL(file);
+			type = file.name.split(".").pop().toLowerCase();
+			if ($.inArray(type, arrtype) > -1) {
+				$('#' + img).attr('src', src);
 			}
-			else{
+			else {
 				alert('Hình ảnh không được hỗ trợ');
 			}
 		});
 	</script>
 </body>
+
 </html>

@@ -41,5 +41,7 @@ $(document).ready(function () {
         }
       }
     });
+
+    window.location.href = "/users/san-pham";
   });
 });
