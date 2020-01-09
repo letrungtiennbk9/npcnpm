@@ -27,14 +27,41 @@
 	<!-- Custom stlylesheet -->
 	<link type="text/css" rel="stylesheet" href="/stylesheets/style.css"/>
 
-	<link rel="stylesheet" href="stylesheets/main.css">
-
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
+		<style type="text/css">
+			/*-- acouunt--*/
+			.user-posts td{
+				padding: 20px;
+			}
+			.user-posts thead{
+				background: #d23630;
+				color: #FFFFFF;
+			}
+			.user-posts{
+				border: 1px solid #e5e7ed;
+			}
+			.user-posts tbody tr{
+				border-bottom: 1px solid #e5e7ed;
+			}
+			.user-posts .pending{
+				color: #d33730;
+				font-weight: bold;
+			}
+			.user-posts .accept{
+				color: #117711;
+				font-weight: bold;
+			}
+			.user-posts .refuse{
+				color: #969696;
+				font-weight: bold;
+			}
+
+		</style>
 	</head>
 	<body>
 		<!-- HEADER -->
@@ -54,7 +81,7 @@
 						<ul class="breadcrumb-tree">
 							<li><a href="#">Trang chủ</a></li>
 							<li><a href="#">Tài khoản</a></li>
-							<li class="active">Thông tin</li>
+							<li class="active">Sản phẩm đã đăng</li>
 						</ul>
 					</div>
 				</div>
@@ -68,61 +95,57 @@
 		<div class="section">
 			<!-- container -->
 			<div class="container">
+					<!-- container -->
+			<div class="container">
 				<!-- row -->
 				<div class="row">
-					<%include account_nav%>
-					<div class="right col-lg-9">
-						<h4 class="mb-sm-4 mb-3">Thông tin tài khoản | <span style="color: #e24f38"><%=user.username%></span></h4>
+					<div class="right col">
+						<h4 class="mb-sm-4 mb-3">Sản phẩm trong danh sách mơ ước</h4>
 						<hr class="m-0">
-						<div class="col-lg-3">
-							<img src="/images/img-01.png" width="150px" height="150px">
-						</div>
-						<div class="col-lg-6">
-							<p><%=user.fullname%></p>
-							<p><%if(user.gender===1){%>Nam<%}else if(user.gender===0){%>Nữ<%}%></p>
-							<div class="view-contact">
-								<a class="mb-2" data-toggle="collapse" href="#collapseContact" role="button" aria-expanded="false" aria-controls="collapseContact">Xem thông tin liên hệ <i class="fa fa-angle-down"></i> </a>
-								<div class="collapse" id="collapseContact" style="margin-top: 10px">
-									<p>Số điện thoại: <%=user.phone%></p>
-									<p>Email: <%=user.email%></p>
-									<p>Facebook: <%=user.facebook%></p>
-									<p>Address: <%=user.address%></p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-12">
-							<h4 class="mb-sm-4 mb-3 mt-30">Đánh giá</h4>
-							<hr class="m-0">
-							<table class="user-posts border" style="width: 100%">
-								<thead>
+
+						<table class="user-posts border">
+							<thead>
+								<tr class="text-center">
+									<td>Hình ảnh</td>
+									<td>Sản phẩm</td>
+									<td>Gía ban</td>
+									<td>Lượt xem</td>
+									<td>Hành động</td>
+								</tr>
+							</thead>
+							<tbody>
+								<%products.forEach(function(product){ %>
+									<%if(product!=null){%>
+									
 									<tr>
-										<td>Hình ảnh</td>
-										<td>Người đánh giá</td>
-										<td>Nội dung</td>
-										<td class="text-center">Điểm</td>
-										<td class="text-center">Ngày đăng</td>
+										<td><img width="60px" height="60px" src="<%=product.images[0]%>"></td>
+										<td><a href="/"><%=product.name%></a></td>
+
+
+										<td class="text-center"><%=product.price%></td>
+
+										<td class="text-center"><%=product.views%></td>
+										<td>
+											<div class="form-group">
+												<select class="form-control" id="sel1" data-post="<%=product._id%>" name="Xóa">
+
+													<option value="3">Xóa </option>
+												</select>
+											</div>
+										</td>
 									</tr>
-								</thead>
-								<tbody>
-									<%userReviews.reviews.forEach(function(review){
-										%>
-										<tr>
-											<td><img width="60px" height="60px" src="/images/img-01.png"></td>
-											<td><a href="/info?id=<%=review.reviewedByUserId._id%>"><%=review.reviewedByUserId.username%></a></td>
-											<td >Uy tín</td>
-											<td class="pending text-center"><%=review.point%>/5</td>
-											<td class="text-center"><%=getDateCreated(review.created_at)%></td>
-										</tr>
-										<%
-									}) %>
-								</tbody>
-							</table>
-						</div>
+									<%}%>
+									<%
+								})%>
+							</tbody>
+						</table>
 					</div>
 				</div>
-				<!-- /row -->
+				<!-- /container -->
+				
+				</div>
+				<!-- /container -->
 			</div>
-			<!-- /container -->
 			<!-- /Section -->
 
 			<!-- NEWSLETTER -->
@@ -265,6 +288,52 @@
 		<script src="/javascripts/nouislider.min.js"></script>
 		<script src="/javascripts/jquery.zoom.min.js"></script>
 		<script src="/javascripts/main.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('select[name="action"]').change(function(){
+					var action = $(this).val();
+					var id = $(this).attr('data-post');
+					var target= $(this);
+					if(action==3){
+						if(confirm("Xóa sản phẩm này!")){
+							$.ajax({
+								url:'/users/delete-product',
+								type:'post',
+								data:{id:id},
+							}).done(function(res){
+								target.parents('tr').remove();
+								alert('Đã xóa sản phẩm');
+							}).fail(function(res){
+								alert('Lỗi! thử lại sau');
+							})
+						}
+					}
+					else if(action==1){
+						$.ajax({
+							url:'/users/mark-sold',
+							type:'post',
+							data:{id:id},
+						}).done(function(res){
+							location.href=location.href;
+						}).fail(function(res){
+							alert('Lỗi! thử lại sau');
+						})
+					}
+					else if(action==4){
+						$.ajax({
+							url:'/users/unmark-sold',
+							type:'post',
+							data:{id:id},
+						}).done(function(res){
+							location.href=location.href;
+						}).fail(function(res){
+							alert('Lỗi! thử lại sau');
+						})
+					}
+				})
+			})
+
+		</script>
 
 	</body>
 	</html>

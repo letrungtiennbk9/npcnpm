@@ -17,26 +17,24 @@ router.get('/sua-thong-tin',userController.editUserInfoPage);
 //thực hiện thay đổi thông tin tài khoản
 router.post('/sua-thong-tin',userController.validateUpdateInfo,userController.editUserInfo);
 
-//trang đăng sản phẩm
-router.get('/dang-san-pham',userController.postProductPage);
-
-//thực hiện đăng sản phẩm
-router.post('/dang-san-pham',userController.postProduct);
-
-//trang sửa sản phẩm
-router.get('/sua-san-pham',userController.editProductPage);
-
-//thực hiện sủa sản phẩm
-router.post('/sua-san-pham',userController.editProduct);
-
 //xem san pham đã đăng
 router.get('/san-pham',userController.listProducts);
 
+//xóa sp
+router.post('/delete-product',userController.deleteProduct);
+
+router.post('/mark-sold',userController.markSold);
+
+router.post('/unmark-sold',userController.unMarkSold);
+
 //đánh giá người bán
-router.post('/danh-gia',userController.reviewUser);
+router.post('/review',userController.reviewUser);
+
+router.post('/view-contact',userController.viewContact);
 
 //đánh giá sản phẩm
 router.post('/danh-gia-san-pham',userController.reviewProduct);
 
+router.get('/wishlist',userController.wishList);
 
 module.exports = router;

@@ -1,5 +1,7 @@
 var express = require('express');
 let User = require('../models/user');
+let UserReview = require('../models/reviewUser');
+const Product = require('../models/product');
 const { check, validationResult } = require('express-validator');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
@@ -40,35 +42,40 @@ exports.userRegister = function(req,res,next){
 	if (!errors.isEmpty()) {
 		return res.status(422).send(errors);
 	}
-
-	let newUser = new User({
-		username: req.body.username,
-		password: req.body.password,
-		fullname: req.body.fullname,
-		avatar: req.body.avatar,
-		phone: req.body.phone,
-		email: req.body.email,
-		facebook: req.body.facebook,
-		address: req.body.address,
-		gender: req.body.gender
-	});
-
-	User.createUser(newUser, function (err, createdUser) {
-		if (err) {
-			res.status(503);
-			res.send(err);
-			return;
+	User.findOne({username:req.body.username},function(err,user){
+		if(err){
+			return res.status(503).send(err);
 		}
-		else {
-			req.login(newUser,function(err){
-				if (err) {
-					return res.status(503).send(err);
-				}
-				else{
-					return res.status(200).send('OK');
-				}
-			})
+		else if(user){
+			return res.status(422).send({errors:[{msg:'Tên tài khoản đã tồn tại',param:'username'}]});
 		}
+		let newUser = new User({
+			username: req.body.username,
+			password: req.body.password,
+			fullname: req.body.fullname,
+			avatar: req.body.avatar,
+			phone: req.body.phone,
+			email: req.body.email,
+			facebook: req.body.facebook,
+			address: req.body.address,
+			gender: req.body.gender
+		});
+
+		User.createUser(newUser, function (err, createdUser) {
+			if (err) {
+				return res.status(503).send(err);
+			}
+			else {
+				req.login(newUser,function(err){
+					if (err) {
+						return res.status(503).send(err);
+					}
+					else{
+						return res.status(200).send({message:'OK'});
+					}
+				})
+			}
+		})
 	})
 }
 
@@ -93,7 +100,13 @@ exports.userLogin = function(req,res,next){
 
 //thông tin tài khoản
 exports.userInfo = function(req, res, next) {
-	res.render('user_info');
+	let id = req.user._id;
+	User.findById(id).populate({path:'reviews',options:{populate:{path:'reviewedByUserId'},sort:{created_at:-1}}}).exec(function(err,userReviews){
+		if(err){
+			return res.status(503).send(err);
+		}
+		else return res.render('user_info',{userReviews:userReviews});
+	})
 };
 
 //quên mật khẩu
@@ -187,8 +200,40 @@ exports.editProduct = function(req,res,next){
 
 //xem san pham đã đăng
 exports.listProducts = function(req,res,next){
-	res.render('list_posted_product');
+	let id = req.user._id;
+	Product.find({userId:id,deleted_at:null},function(err,products){
+		if(err){
+			return res.status(503).send({message:'server error'});
+		}else{
+			console.log(products);
+			return res.render('list_posted_product',{products:products});
+		}	
+	})
 };
+// ,options:{populate:{path:'wishlist'}}
+exports.wishList =function(req,res,next){
+	let id = req.user._id;
+	User.findById(id).populate({path:'wishlist.productid'}).exec(function(err,user){
+		if(err){
+			console.log(err); 
+
+			return res.status(503).send(err);
+		}
+		else{
+			let products=[]
+			console.log(user.wishlist.length+"1111");
+			for(product in user.wishlist){
+				if(user.wishlist[product]!=null)
+				products.push(user.wishlist[product].productid)
+			}
+
+			console.log(products);
+			
+			return res.render('wish_list',{products:products});
+	}
+	})
+
+}
 
 //lịch sử mua hàng
 exports.history = function(req,res,next){
@@ -197,8 +242,101 @@ exports.history = function(req,res,next){
 
 //đánh giá người bán
 exports.reviewUser = function(req,res,next){
+	let point = parseInt(req.body.point);
+	let review = req.body.review;
+	if(!review||review.length>=500){
+		return res.status(422).send({errors:[{msg:'Nội dung đánh giá không được để trống và không quá 500 ký tự',param:'review'}]});
+	}
+	if(point<1){
+		point=1;
+	}
+	else if(point>5){
+		point=5;
+	}
+	let fromUser = req.user._id;
+	let toUser = req.body.to_user;
+	if(fromUser==toUser){
+		return res.status(503).send({message:'error'});
+	}
+	let reviewObj ={point:point,review:review,reviewedUserId:toUser,reviewedByUserId:fromUser};
+	UserReview.findOne({reviewedUserId:toUser,reviewedByUserId:fromUser},function(err,doc){
+		if(err){
+			return res.status(503).send(err);
+		}
+		else if(doc!=null){
+			doc.review=review;
+			doc.point=point;
+			doc.created_at = Date.now();
+			doc.save(function(err,result){
+				if(err){
+					return res.status(503).send(err);
+				}
+				else{
+					return res.status(200).send({review:result});
+				}
+			});
+
+		}
+		else{
+			UserReview.create(reviewObj,function(err){
+				if(err){
+					return res.status(503).send(err);
+				}
+				else{
+					return res.status(200).send({review:reviewObj});
+				}
+			})
+		}
+	})
 
 };
+exports.deleteProduct = function(req,res,next){
+	let id = req.body.id;
+	Product.findOneAndUpdate({_id:id,userId:req.user._id},{deleted_at:Date.now()},function(err){
+		if(err){
+			return res.status(503).send(err);
+		}
+		else{
+			return res.status(200).send({message:'ok'});
+		}
+	})
+}
+exports.markSold = function(req,res,next){
+	let id = req.body.id;
+	Product.findOneAndUpdate({_id:id,userId:req.user._id},{sold:Date.now()},function(err){
+		if(err){
+			return res.status(503).send(err);
+		}
+		else{
+			return res.status(200).send({message:'ok'});
+		}
+	})
+}
+
+exports.unMarkSold = function(req,res,next){
+	let id = req.body.id;
+	Product.findOneAndUpdate({_id:id,userId:req.user._id},{sold:null},function(err){
+		if(err){
+			return res.status(503).send(err);
+		}
+		else{
+			return res.status(200).send({message:'ok'});
+		}
+	})
+}
+
+exports.viewContact = function(req,res,next){
+	let id = req.body.id;
+	User.findById(id,function(err,user){
+		if(err||!user){
+			return res.status(503).send(err);
+		}
+		else{
+			let data = {email:user.email,facebook:user.facebook,phone:user.phone,address:user.address};
+			return res.status(200).send(data);
+		}
+	})
+}
 
 //đánh giá sản phẩm
 exports.reviewProduct = function(req,res,next){
@@ -241,3 +379,4 @@ exports.logoutUser = (req, res) => {
 	req.logOut();
 	return res.redirect('/');
 }
+

@@ -51,6 +51,12 @@ app.use(function(req,res,next){
 	else{
 		res.locals.user=null;
 	}
+	res.locals.getDateCreated = function(date_time){
+		var dd = String(date_time.getDate()).padStart(2, '0');
+		var mm = String(date_time.getMonth() + 1).padStart(2, '0');
+		var yyyy = date_time.getFullYear();
+		return dd + '/' + mm + '/' + yyyy;
+	}
 	next();
 })
 

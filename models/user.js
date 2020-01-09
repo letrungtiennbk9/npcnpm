@@ -49,8 +49,25 @@ var userSchema = mongoose.Schema({
 	created_at: { 
 		type: Date,
 		default: Date.now
-	}
+	},
+	wishlist:[{
+		productid:{
+		type:String,
+		default:null,
+		ref: 'Product'}
+	}]
 },{collection:'users'});
+userSchema.virtual('products', {
+	ref: 'Product',
+	localField: '_id',
+	foreignField: 'userId',
+});
+
+userSchema.virtual('reviews',{
+	ref:'reviewUser',
+	localField:'_id',
+	foreignField:'reviewedUserId'
+})
 
 var User = mongoose.model('User', userSchema);
 
@@ -68,6 +85,9 @@ module.exports.createUser = function (newUser, callBack) {
 
 module.exports.getUserByUsername = (username, callback) => {
 	User.findOne({ username: username }, callback);
+}
+module.exports.getWishListByUserid=(id,callback) =>{
+	User.findOne({_id:id},callback);
 }
 
 module.exports.comparePassword = (candidatePassword, hash, callback) => {

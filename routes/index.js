@@ -31,4 +31,10 @@ router.post('/register',userController.validateCreateAccount,userController.user
 //trang quên mật khẩu
 router.get('/quen-mat-khau',redirectIfLogged,userController.forgotPassword);
 
+//xem thong tin tài khoản khác
+router.get('/info',homeController.viewUserInfo);
+
+//xem danh sách sản phẩm của tài khoản khác
+router.get('/info/posts',homeController.viewUserPost);
+
 module.exports = router;
