@@ -79,7 +79,7 @@
 						</div>
 						<div class="col-lg-6">
 							<p><%=user.fullname%></p>
-							<p>Gender</p>
+							<p><%if(user.gender===1){%>Nam<%}else if(user.gender===0){%>Nữ<%}%></p>
 							<div class="view-contact">
 								<a class="mb-2" data-toggle="collapse" href="#collapseContact" role="button" aria-expanded="false" aria-controls="collapseContact">Xem thông tin liên hệ <i class="fa fa-angle-down"></i> </a>
 								<div class="collapse" id="collapseContact" style="margin-top: 10px">
@@ -104,24 +104,17 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td><img width="60px" height="60px" src="/images/img-01.png"></td>
-										<td><a href="/">Nguyễn văn A</a></td>
-										<td >Uy tín</td>
-										<td class="pending text-center">5/5</td>
-										<td class="text-center">01/01/2019</td>
-
-									</tr>
-
-									<tr>
-										<td><img width="60px" height="60px" src="/images/img-01.png"></td>
-										<td><a href="/">Nguyễn văn B</a></td>
-										<td>sản phẩm chất lượng , phục vị tốt ,hàng hàng tốt</td>
-										<td class="pending text-center">4/5</td>
-										<td class="text-center">01/01/2019</td>
-
-									</tr>
-
+									<%userReviews.reviews.forEach(function(review){
+										%>
+										<tr>
+											<td><img width="60px" height="60px" src="/images/img-01.png"></td>
+											<td><a href="/"><%=review.reviewedByUserId.username%></a></td>
+											<td >Uy tín</td>
+											<td class="pending text-center"><%=review.point%>/5</td>
+											<td class="text-center"><%=getDateCreated(review.created_at)%></td>
+										</tr>
+										<%
+									}) %>
 								</tbody>
 							</table>
 						</div>
@@ -263,14 +256,15 @@
 				<!-- /bottom footer -->
 			</footer>
 			<!-- /FOOTER -->
+		</div>
 
-			<!-- jQuery Plugins -->
-			<script src="/javascripts/jquery.min.js"></script>
-			<script src="/javascripts/bootstrap.min.js"></script>
-			<script src="/javascripts/slick.min.js"></script>
-			<script src="/javascripts/nouislider.min.js"></script>
-			<script src="/javascripts/jquery.zoom.min.js"></script>
-			<script src="/javascripts/main.js"></script>
+		<!-- jQuery Plugins -->
+		<script src="/javascripts/jquery.min.js"></script>
+		<script src="/javascripts/bootstrap.min.js"></script>
+		<script src="/javascripts/slick.min.js"></script>
+		<script src="/javascripts/nouislider.min.js"></script>
+		<script src="/javascripts/jquery.zoom.min.js"></script>
+		<script src="/javascripts/main.js"></script>
 
-		</body>
-		</html>
+	</body>
+	</html>

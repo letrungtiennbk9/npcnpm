@@ -10,7 +10,7 @@ var reviewUserSchema = mongoose.Schema({
 		type:Schema.Types.ObjectId,
 		required:true,
 		ref:'User'
-	}
+	},
 	point: {
 		type: Number,
 		required: true

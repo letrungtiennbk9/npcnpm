@@ -54,7 +54,8 @@ var productSchema = mongoose.Schema({
 	},
 	pending:{
 		type:Number,
-		required:true
+		required:true,
+		default: 1
 	},
 	approvedOrRefusedBy:{
 		adminId:{

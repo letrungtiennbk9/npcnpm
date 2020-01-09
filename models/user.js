@@ -51,6 +51,17 @@ var userSchema = mongoose.Schema({
 		default: Date.now
 	}
 },{collection:'users'});
+userSchema.virtual('products', {
+	ref: 'Product',
+	localField: '_id',
+	foreignField: 'userId',
+});
+
+userSchema.virtual('reviews',{
+	ref:'reviewUser',
+	localField:'_id',
+	foreignField:'reviewedUserId'
+})
 
 var User = mongoose.model('User', userSchema);
 
