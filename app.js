@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const passport = require('passport');
 const session = require('express-session');
+var MongoStore =require('connect-mongo')(session);
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -35,9 +36,11 @@ app.use(
 	session({
 		secret: 'secret',
 		resave: true,
-		saveUninitialized: true
+		saveUninitialized: true,
+		store: new MongoStore({mongooseConnection:mongoose.connection}),
+		cookie:{maxAge: 180*60*1000}
 	})
-);
+	);
 app.use(passport.initialize());
 app.use(passport.session());
 
