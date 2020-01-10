@@ -37,4 +37,7 @@ router.post('/danh-gia-san-pham',userController.reviewProduct);
 
 router.get('/wishlist',userController.wishList);
 
+router.post('/addProduct', userController.upload ,userController.addProduct);
+
+
 module.exports = router;

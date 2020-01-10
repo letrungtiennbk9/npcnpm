@@ -5,6 +5,12 @@ const Product = require('../models/product');
 const { check, validationResult } = require('express-validator');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+let multer = require('multer');
+const API_URL = 'http://localhost:3000/';
+const STORE_PATH = './public/images/';
+let mongoose = require('mongoose');
+
+const BROWSE_PATH = API_URL + 'images/'
 
 exports.validateCreateAccount = [
 check('username', 'Tên tài khoản không được để trống').notEmpty(),
@@ -380,4 +386,51 @@ exports.logoutUser = (req, res) => {
 	console.log('yfytdytdytdytdyt');
 	return res.redirect('/');
 }
+let storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, STORE_PATH);
+  },
+  filename: function (req, file, cb) {
+    cb(null, new Date().toISOString() + file.originalname);
+  }
+});
 
+let fileFilter = (req, file, cb) => {
+  if (file.mimetype == 'image/png' || file.mimetype == 'image/jpeg' ||
+    file.mimetype == 'image/jpg') {
+    cb(null, true);
+  }
+  else {
+    cb(new Error('Định dạng file không hợp lệ'), false);
+  }
+}
+
+exports.upload = multer({ storage: storage, fileFilter: fileFilter }).single('productImage');
+
+exports.addProduct = (req, res, next) => {
+	console.log(req.file.filename);
+	console.log(req.body);
+  req.body.images = 'http://localhost:3000/images/' + req.file.filename;
+
+  let tmp = new Product({
+    name: req.body.name,
+    categoryId: req.body.categoryId,
+    userId: mongoose.Types.ObjectId(req.body.userId),
+    images: req.body.images,
+    price: req.body.price,
+    detail: req.body.detail,
+    location: req.body.location,
+    status: req.body.status
+  })
+
+  tmp.save((err, doc) => {
+    console.log(err);
+    if(err) {
+    	console.log(err);
+    	return res.status(500).json({message: err});
+    }
+    else {
+      return res.status(200).json({result: doc});
+    }
+  });
+}
