@@ -27,10 +27,10 @@
 
 	<!-- Custom stlylesheet -->
 	<link type="text/css" rel="stylesheet" href="stylesheets/style.css" />
-	<script defer src="javascripts/jquery.min.js"></script>
+	<script defer src="/javascripts/jquery.min.js"></script>
 
-	<script defer src="javascripts/jquery.nice-select.js"></script>
-	<script defer src="javascripts/my-js/myjs.js"></script>
+	<script defer src="/javascripts/jquery.nice-select.js"></script>
+	<script defer src="/javascripts/my-js/myjs.js"></script>
 
 
 	<link rel="stylesheet" href="stylesheets/nice-select.css">
@@ -41,137 +41,137 @@
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
 
-</head>
+	</head>
 
-<body onload="dc.loadMoreNew(1);">
-	<!-- HEADER -->
-	<%include header%>
-	<!-- /HEADER -->
+	<body>
+		<!-- HEADER -->
+		<%include header%>
+		<!-- /HEADER -->
 
-	<!--NAV BAR-->
-	<%include nav-bar%>
-	<!-- BREADCRUMB -->
-	<div id="breadcrumb" class="section">
-		<!-- container -->
-		<div class="container">
-			<!-- row -->
-			<div class="row">
-				<div class="col-md-12">
-					<ul class="breadcrumb-tree">
-						<li><a href="/">Trang chủ</a></li>
-						<li class="active">Tất cả sản phẩm</li>
-					</ul>
+		<!--NAV BAR-->
+		<%include nav-bar%>
+		<!-- BREADCRUMB -->
+		<div id="breadcrumb" class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12">
+						<ul class="breadcrumb-tree">
+							<li><a href="/">Trang chủ</a></li>
+							<li class="active">Tất cả sản phẩm</li>
+						</ul>
+					</div>
 				</div>
+				<!-- /row -->
 			</div>
-			<!-- /row -->
+			<!-- /container -->
 		</div>
-		<!-- /container -->
-	</div>
-	<!-- /BREADCRUMB -->
+		<!-- /BREADCRUMB -->
 
-	<!-- SECTION -->
-	<div class="section">
-		<!-- container -->
-		<div class="container">
-			<!-- row -->
-			<div class="row">
-				<!-- ASIDE -->
-				<div id="aside" class="col-md-3">
-					<!-- aside Widget -->
-					<div class="aside">
-						<h3 class="aside-title">Danh mục</h3>
-						<div class="checkbox-filter type-filter">
-							<div class="input-checkbox">
-								<input value="1" type="checkbox" id="category-20" onclick="dc.filter();">
-								<label for="category-20">
-									<span></span>
-									Bất động sản
-								</label>
-							</div>
+		<!-- SECTION -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<!-- ASIDE -->
+					<div id="aside" class="col-md-3">
+						<!-- aside Widget -->
+						<div class="aside">
+							<h3 class="aside-title">Danh mục</h3>
+							<div class="checkbox-filter type-filter">
+								<div class="input-checkbox">
+									<input value="1" type="checkbox" id="category-20" onclick="dc.filter();">
+									<label for="category-20">
+										<span></span>
+										Bất động sản
+									</label>
+								</div>
 
-							<div class="input-checkbox">
-								<input value="2" type="checkbox" id="category-24" onclick="dc.filter();">
-								<label for="category-24">
-									<span></span>
-									Xe cộ
-								</label>
-							</div>
+								<div class="input-checkbox">
+									<input value="2" type="checkbox" id="category-24" onclick="dc.filter();">
+									<label for="category-24">
+										<span></span>
+										Xe cộ
+									</label>
+								</div>
 
-							<div class="input-checkbox">
-								<input value="3" type="checkbox" id="category-23" onclick="dc.filter();">
-								<label for="category-23">
-									<span></span>
-									Thời trang
-								</label>
-							</div>
+								<div class="input-checkbox">
+									<input value="3" type="checkbox" id="category-23" onclick="dc.filter();">
+									<label for="category-23">
+										<span></span>
+										Thời trang
+									</label>
+								</div>
 
-							<div class="input-checkbox">
-								<input value="4" type="checkbox" id="category-21" onclick="dc.filter();">
-								<label for="category-21">
-									<span></span>
-									Đồ điện tử
-								</label>
-							</div>
+								<div class="input-checkbox">
+									<input value="4" type="checkbox" id="category-21" onclick="dc.filter();">
+									<label for="category-21">
+										<span></span>
+										Đồ điện tử
+									</label>
+								</div>
 
-							<div class="input-checkbox">
-								<input value="5" type="checkbox" id="category-22" onclick="dc.filter();">
-								<label for="category-22">
-									<span></span>
-									Giải trí
-								</label>
-							</div>
-						</div>
-					</div>
-					<!-- /aside Widget -->
-
-					<!-- aside Widget -->
-					<div class="aside">
-						<h3 class="aside-title">Tỉnh thành</h3>
-						<div class="checkbox-filter location-filter">
-							<div class="input-checkbox">
-								<input value="1" type="checkbox" id="category-1" onclick="dc.filter();">
-								<label for="category-1">
-									<span></span>
-									Hồ Chí Minh
-								</label>
-							</div>
-
-							<div class="input-checkbox">
-								<input value="2" type="checkbox" id="category-2" onclick="dc.filter();">
-								<label for="category-2">
-									<span></span>
-									Hà Nội
-								</label>
-							</div>
-
-							<div class="input-checkbox">
-								<input value="3" type="checkbox" id="category-3" onclick="dc.filter();">
-								<label for="category-3">
-									<span></span>
-									Đà Nẵng
-								</label>
-							</div>
-
-							<div class="input-checkbox">
-								<input value="4" type="checkbox" id="category-4" onclick="dc.filter();">
-								<label for="category-4">
-									<span></span>
-									Huế
-								</label>
-							</div>
-
-							<div class="input-checkbox">
-								<input value="5" type="checkbox" id="category-5" onclick="dc.filter();">
-								<label for="category-5">
-									<span></span>
-									Cần Thơ
-								</label>
+								<div class="input-checkbox">
+									<input value="5" type="checkbox" id="category-22" onclick="dc.filter();">
+									<label for="category-22">
+										<span></span>
+										Giải trí
+									</label>
+								</div>
 							</div>
 						</div>
-					</div>
-					<!-- /aside Widget -->
+						<!-- /aside Widget -->
 
-					<!-- aside Widget -->
+						<!-- aside Widget -->
+						<div class="aside">
+							<h3 class="aside-title">Tỉnh thành</h3>
+							<div class="checkbox-filter location-filter">
+								<div class="input-checkbox">
+									<input value="1" type="checkbox" id="category-1" onclick="dc.filter();">
+									<label for="category-1">
+										<span></span>
+										Hồ Chí Minh
+									</label>
+								</div>
+
+								<div class="input-checkbox">
+									<input value="2" type="checkbox" id="category-2" onclick="dc.filter();">
+									<label for="category-2">
+										<span></span>
+										Hà Nội
+									</label>
+								</div>
+
+								<div class="input-checkbox">
+									<input value="3" type="checkbox" id="category-3" onclick="dc.filter();">
+									<label for="category-3">
+										<span></span>
+										Đà Nẵng
+									</label>
+								</div>
+
+								<div class="input-checkbox">
+									<input value="4" type="checkbox" id="category-4" onclick="dc.filter();">
+									<label for="category-4">
+										<span></span>
+										Huế
+									</label>
+								</div>
+
+								<div class="input-checkbox">
+									<input value="5" type="checkbox" id="category-5" onclick="dc.filter();">
+									<label for="category-5">
+										<span></span>
+										Cần Thơ
+									</label>
+								</div>
+							</div>
+						</div>
+						<!-- /aside Widget -->
+
+						<!-- aside Widget -->
 					<!-- <div class="aside">
 						<h3 class="aside-title">Thời gian đăng</h3>
 						<div class="checkbox-filter time-filter">
@@ -374,6 +374,23 @@
 	<script src="javascripts/jquery.zoom.min.js"></script>
 	<script src="javascripts/main.js"></script>
 	<script src="javascripts/my-js/filter.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			dc.loadMoreNew(1);
+
+			var from, userid,proid;
+			$(document).on('click',"#addwishlist",function () {
+				proid=$(this).siblings("#proid").val();
+				$.get("category/them-vao-wishlist", { productid:proid }, function (data) {
+					confirm.log("vo dc")
+				// if (data == "sent") {
+				// 	$("#message").empty().html("<p>Email is been sent at " + to + " . Please check inbox !</p>");
+				// }
+			});
+			});
+		})
+
+	</script>
 
 </body>
 

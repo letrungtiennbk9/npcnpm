@@ -377,6 +377,7 @@ passport.deserializeUser(function (id, done) {
 
 exports.logoutUser = (req, res) => {
 	req.logOut();
+	console.log('yfytdytdytdytdyt');
 	return res.redirect('/');
 }
 

@@ -1,0 +1,35 @@
+<!-- product -->
+<%products.forEach(function(product){
+  %>
+<div class="f_p_item col-md-4 col-xs-6" style="display: block;">
+  <div class="product">
+    <div class="product-img">
+      <img src="<%=product.image%>" alt="">
+    </div>
+    <div class="product-body">
+      <p class="product-category">
+        <%if(product.location==1){%>
+        TP.Hồ Chí Minh
+        <%}else if(product.location==2){%>
+        Hà Nội
+        <%}else if(product.location==3){%>
+        Đà Nẵng
+        <%}else if(product.location==4){%>
+        Cần Thơ
+        <%}else if(product.location==5){%>
+        Huế
+        <%}%>
+        <%=product.locationInString%></p>
+      <h3 class="product-name"><a href="/product/<%=product._id%>"><%=product.name%></a></h3>
+      <h4 class="product-price"><%=product.price%></h4>
+    </div>
+    <div class="add-to-cart">
+      <button  type="button" id="addwishlist" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Quan tâm</button>
+      <input class="input" type="text" id="proid" value="<%=product._id%>" hidden  placeholder="<%=product._id%>">
+    </div>
+  </div>
+</div>
+<!-- /product -->
+
+
+<%})%>

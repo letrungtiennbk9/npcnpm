@@ -138,28 +138,28 @@
 						<p> <b>Mô tả: </b> <%= theProduct.detail %></p>
 
 						<div class="add-to-cart">
-							<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Quan tâm</button>
+							<button class="add-to-cart-btn" id="addwishlist"><i class="fa fa-shopping-cart"></i>Quan tâm</button>
+							<input class="input" type="text" id="proid" value="<%=theProduct._id%>" hidden  placeholder="<%=theProduct._id%>">
 						</div>
 
 
 
-						<div class="view-contact">
-							<a class="mb-2" data-toggle="collapse" href="#collapseContact" role="button" aria-expanded="false"
-								aria-controls="collapseContact">Xem thông tin liên hệ <i class="fa fa-angle-down"></i> </a>
-							<ul class="collapse" id="collapseContact">
+						<!-- <div class="view-contact"> -->
+							<a class="mb-2"  style="color: red" href="/info?id=<%=theProduct.userId%>">Xem thông tin liên hệ</a>
+							<!-- <ul class="collapse" id="collapseContact">
 								<li>Số điện thoại: </li>
 								<li>Email: </li>
 								<li>Facebook: </li>
-							</ul>
-						</div>
+							</ul> -->
+						<!-- </div> -->
 
-						<ul class="product-links">
+<!-- 						<ul class="product-links">
 							<li>Chia sẻ:</li>
 							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
 							<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
 							<li><a href="#"><i class="fa fa-envelope"></i></a></li>
-						</ul>
+						</ul> -->
 
 					</div>
 				</div>
@@ -626,7 +626,22 @@
 	<script src="/javascripts/nouislider.min.js"></script>
 	<script src="/javascripts/jquery.zoom.min.js"></script>
 	<script src="/javascripts/main.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
 
+			var from, userid,proid;
+			$(document).on('click',"#addwishlist",function () {
+				proid=$(this).siblings("#proid").val();
+				$.get("category/them-vao-wishlist", { productid:proid }, function (data) {
+					confirm.log("vo dc")
+				// if (data == "sent") {
+				// 	$("#message").empty().html("<p>Email is been sent at " + to + " . Please check inbox !</p>");
+				// }
+			});
+			});
+		})
+
+	</script>
 </body>
 
 </html>

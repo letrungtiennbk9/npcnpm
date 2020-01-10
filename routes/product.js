@@ -10,4 +10,6 @@ router.get('/add-product', productController.getAddProduct);
 router.post('/seller-contact',productController.sellerContact);
 router.get('/:id', productController.productInfo);
 
+router.get('/:nTurn/:sortType', productController.getOnDemand);
+
 module.exports = router;

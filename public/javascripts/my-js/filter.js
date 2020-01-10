@@ -5,7 +5,7 @@
   let nTurn = 0;
   let sortType = "normal";
 
-  let productsDbUrl = "http://localhost:3000/";
+  let productsDbUrl = "/product/";
   let queryStr = "";
   let categorySingleProductHtmlUrl = '/snippets/category-single-product.ejs';
   let snippet;
@@ -17,7 +17,28 @@
     });
   }
 
-  getSnippet();
+  // getSnippet();
+
+  snippet = `
+
+  <div class="f_p_item col-md-4 col-xs-6" style="display: block;">
+  <div class="product">
+  <div class="product-img">
+  <img src="{{imagePath}}" alt="">
+  </div>
+  <div class="product-body">
+  <p class="product-category">{{location}}</p>
+  <h3 class="product-name"><a href="product/{{_id}}">{{title}}</a></h3>
+  <h4 class="product-price">{{price}}</h4>
+  </div>
+  <div class="add-to-cart">
+  <button  type="button" id="addwishlist" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>{{_id}} add to
+  Wishlist</button>
+  <input class="input" type="text" id="proid" value="{{_id}}" hidden  placeholder="{{_id}}">
+  </div>
+  </div>
+  </div>
+  `;
 
   dc.getData = async () => {
     console.log('aaaaaaaaaaaaaaaaa');
@@ -27,45 +48,47 @@
     let delta;
     await $.get(realProductsDbUrl, (res, status) => {
       data = res;
+      $("#category-single-product-section").empty();
+      $("#category-single-product-section").append(data);
       delta = res.length;
       nTurn++;
     });
-    buildView();
+    // buildView();
     nLoaded = data.length;
   }
 
-  buildView = () => {
-    let finalHtml = "";
-    for (let i = 0; i < data.length; i++) {
-      let tmp = insertProperty(snippet, "title", data[i].name);
-      tmp = insertProperty(tmp, "price", data[i].price);
-      tmp = insertProperty(tmp, "imagePath", data[i].images);
-      tmp = insertProperty(tmp, "_id", data[i]._id);
-      console.log(data[i].location);
-      switch (data[i].location) {
-        case 1:
-          tmp = insertProperty(tmp, "location", "Tp.Hồ Chí Minh");
-          break;
-        case 2:
-          tmp = insertProperty(tmp, "location", "Hà Nội");
-          break;
-        case 3:
-          tmp = insertProperty(tmp, "location", "Đà Nẵng");
-          break;
-        case 4:
-          tmp = insertProperty(tmp, "location", "Cần Thơ");
-          break;
-        case 5:
-          tmp = insertProperty(tmp, "location", "Huế");
-          break;
-        default:
-        // code block
-      }
-      finalHtml += tmp;
-    }
-    $("#category-single-product-section").empty();
-    $("#category-single-product-section").append(finalHtml);
-  }
+  // buildView = () => {
+  //   let finalHtml = "";
+  //   for (let i = 0; i < data.length; i++) {
+  //     let tmp = insertProperty(snippet, "title", data[i].name);
+  //     tmp = insertProperty(tmp, "price", data[i].price);
+  //     tmp = insertProperty(tmp, "imagePath", data[i].images);
+  //     tmp = insertProperty(tmp, "_id", data[i]._id);
+  //     console.log(data[i].location);
+  //     switch (data[i].location) {
+  //       case 1:
+  //         tmp = insertProperty(tmp, "location", "Tp.Hồ Chí Minh");
+  //         break;
+  //       case 2:
+  //         tmp = insertProperty(tmp, "location", "Hà Nội");
+  //         break;
+  //       case 3:
+  //         tmp = insertProperty(tmp, "location", "Đà Nẵng");
+  //         break;
+  //       case 4:
+  //         tmp = insertProperty(tmp, "location", "Cần Thơ");
+  //         break;
+  //       case 5:
+  //         tmp = insertProperty(tmp, "location", "Huế");
+  //         break;
+  //       default:
+  //       // code block
+  //     }
+  //     finalHtml += tmp;
+  //   }
+  //   $("#category-single-product-section").empty();
+  //   $("#category-single-product-section").append(finalHtml);
+  // }
 
 
   activePageNum = (pageNum) => {
